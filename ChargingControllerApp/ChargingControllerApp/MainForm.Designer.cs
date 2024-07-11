@@ -34,6 +34,9 @@
 			contextMenuStrip1 = new ContextMenuStrip(components);
 			toolStripMenuItem1 = new ToolStripMenuItem();
 			exitToolStripMenuItem = new ToolStripMenuItem();
+			IpTB = new MaskedTextBox();
+			label1 = new Label();
+			SetIpBt = new Button();
 			contextMenuStrip1.SuspendLayout();
 			SuspendLayout();
 			// 
@@ -65,15 +68,45 @@
 			exitToolStripMenuItem.Text = "Exit";
 			exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
 			// 
+			// IpTB
+			// 
+			IpTB.Location = new Point(76, 37);
+			IpTB.Mask = "###.###.###.###";
+			IpTB.Name = "IpTB";
+			IpTB.Size = new Size(100, 23);
+			IpTB.TabIndex = 1;
+			// 
+			// label1
+			// 
+			label1.AutoSize = true;
+			label1.Location = new Point(76, 19);
+			label1.Name = "label1";
+			label1.Size = new Size(83, 15);
+			label1.TabIndex = 2;
+			label1.Text = "Server local IP:";
+			// 
+			// SetIpBt
+			// 
+			SetIpBt.Location = new Point(182, 36);
+			SetIpBt.Name = "SetIpBt";
+			SetIpBt.Size = new Size(75, 23);
+			SetIpBt.TabIndex = 3;
+			SetIpBt.Text = "Set";
+			SetIpBt.UseVisualStyleBackColor = true;
+			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(367, 450);
+			Controls.Add(SetIpBt);
+			Controls.Add(label1);
+			Controls.Add(IpTB);
 			Name = "MainForm";
 			Text = "Form1";
 			contextMenuStrip1.ResumeLayout(false);
 			ResumeLayout(false);
+			PerformLayout();
 		}
 
 		#endregion
@@ -82,5 +115,8 @@
 		private ContextMenuStrip contextMenuStrip1;
 		private ToolStripMenuItem toolStripMenuItem1;
 		private ToolStripMenuItem exitToolStripMenuItem;
+		private MaskedTextBox IpTB;
+		private Label label1;
+		private Button SetIpBt;
 	}
 }
