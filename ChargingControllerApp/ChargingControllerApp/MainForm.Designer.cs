@@ -49,27 +49,27 @@
 			// 
 			contextMenuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1 });
 			contextMenuStrip1.Name = "contextMenuStrip1";
-			contextMenuStrip1.Size = new Size(181, 48);
+			contextMenuStrip1.Size = new Size(117, 26);
 			// 
 			// toolStripMenuItem1
 			// 
 			toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { exitToolStripMenuItem });
 			toolStripMenuItem1.Name = "toolStripMenuItem1";
-			toolStripMenuItem1.Size = new Size(180, 22);
+			toolStripMenuItem1.Size = new Size(116, 22);
 			toolStripMenuItem1.Text = "Options";
 			// 
 			// exitToolStripMenuItem
 			// 
 			exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			exitToolStripMenuItem.Size = new Size(180, 22);
+			exitToolStripMenuItem.Size = new Size(93, 22);
 			exitToolStripMenuItem.Text = "Exit";
-			exitToolStripMenuItem.Click += this.exitToolStripMenuItem_Click;
+			exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
 			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(800, 450);
+			ClientSize = new Size(367, 450);
 			Name = "MainForm";
 			Text = "Form1";
 			contextMenuStrip1.ResumeLayout(false);
