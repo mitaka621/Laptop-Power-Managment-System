@@ -1,3 +1,5 @@
+using ChargingControllerApp.Services;
+using ChargingControllerApp.Services.Contracts;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace ChargingControllerApp
