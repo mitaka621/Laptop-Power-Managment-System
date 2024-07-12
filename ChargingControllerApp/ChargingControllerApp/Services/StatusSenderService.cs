@@ -24,7 +24,7 @@ namespace ChargingControllerApp.Services
 
         public async Task<bool> SendLaptopData()
 		{
-			var laptopData = _dataExtractionService.GetData();
+			var laptopData = _dataExtractionService.GetBasicBatteryData();
 
 			StringContent content = new(JsonSerializer.Serialize(laptopData), Encoding.UTF8, "application/json");
 

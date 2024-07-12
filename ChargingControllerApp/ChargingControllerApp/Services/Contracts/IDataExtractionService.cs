@@ -9,6 +9,10 @@ namespace ChargingControllerApp.Services.Contracts
 {
 	public interface IDataExtractionService
 	{
-		LaptopDataModel GetData();
+		LaptopDataModel GetBasicBatteryData();
+
+		int GetDesignedBatteryCapacity();
+
+		int GetFullChargeCapacity();
 	}
 }
