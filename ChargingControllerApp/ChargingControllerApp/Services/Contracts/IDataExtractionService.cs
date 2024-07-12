@@ -11,8 +11,5 @@ namespace ChargingControllerApp.Services.Contracts
 	{
 		LaptopDataModel GetBasicBatteryData();
 
-		int GetDesignedBatteryCapacity();
-
-		int GetFullChargeCapacity();
 	}
 }

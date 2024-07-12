@@ -21,7 +21,7 @@ namespace ChargingControllerApp
 
 			if (Screen.PrimaryScreen != null)
 			{
-				Rectangle workingArea = Screen.PrimaryScreen.Bounds;
+				Rectangle workingArea = Screen.PrimaryScreen.WorkingArea;
 				int x = workingArea.Right - Width;
 				int y = workingArea.Bottom - Height;
 				Location = new Point(x, y);
@@ -177,19 +177,7 @@ namespace ChargingControllerApp
 
 		private void MainTimer_Tick(object sender, EventArgs e)
 		{
-			int fullChargeCapacity = _extractionService.GetDesignedBatteryCapacity();
-			int designCapacity = _extractionService.GetFullChargeCapacity();
-			double wearPercentage = 100 - ((double)fullChargeCapacity / designCapacity * 100);
 
-			initialCapacityLabel.Text = $"{fullChargeCapacity}mWh";
-			currentCapacityLabel.Text=$"{designCapacity}mWh";		
-			batteryHealthLabel.Text = $"{wearPercentage}%";
-
-			PowerStatus powerStatus = SystemInformation.PowerStatus;
-
-			chargeLevelLabel.Text= $"{powerStatus.BatteryLifePercent*100}%";
-			chargeStatusLabel.Text = $"{powerStatus.PowerLineStatus}";
-			timeRemainingLabel.Text = $"{powerStatus.BatteryFullLifetime/60}";
 		}
 	}
 }
