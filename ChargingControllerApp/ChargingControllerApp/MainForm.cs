@@ -187,8 +187,8 @@ namespace ChargingControllerApp
 
 			PowerStatus powerStatus = SystemInformation.PowerStatus;
 
-			chargeLevelLabel.Text= $"{powerStatus.BatteryLifeRemaining}%";
-			chargeStatusLabel.Text = $"{powerStatus.PowerLineStatus}%";
+			chargeLevelLabel.Text= $"{powerStatus.BatteryLifePercent*100}%";
+			chargeStatusLabel.Text = $"{powerStatus.PowerLineStatus}";
 			timeRemainingLabel.Text = $"{powerStatus.BatteryFullLifetime/60}";
 		}
 	}
