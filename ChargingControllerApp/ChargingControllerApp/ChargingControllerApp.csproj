@@ -8,4 +8,45 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Resourses\circle-check-regular.png" />
+    <None Remove="Resourses\circle-check-regular.svg" />
+    <None Remove="Resourses\circle-xmark-regular.png" />
+    <None Remove="Resourses\circle-xmark-regular.svg" />
+    <None Remove="Resourses\close.png" />
+    <None Remove="Resourses\close.svg" />
+    <None Remove="Resourses\logo.png" />
+    <None Remove="Resourses\logo.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Guna.UI2.WinForms" Version="2.0.4.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resourses\circle-check-regular.png" />
+    <Resource Include="Resourses\circle-check-regular.svg" />
+    <Resource Include="Resourses\circle-xmark-regular.png" />
+    <Resource Include="Resourses\circle-xmark-regular.svg" />
+    <Resource Include="Resourses\close.png" />
+    <Resource Include="Resourses\close.svg" />
+    <Resource Include="Resourses\logo.png" />
+    <Resource Include="Resourses\logo.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

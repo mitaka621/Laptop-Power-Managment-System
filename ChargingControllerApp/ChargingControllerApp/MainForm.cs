@@ -1,5 +1,6 @@
 using ChargingControllerApp.Services;
 using ChargingControllerApp.Services.Contracts;
+using Guna.UI2.WinForms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace ChargingControllerApp
@@ -14,16 +15,16 @@ namespace ChargingControllerApp
 			InitializeComponent();
 
 			StartPosition = FormStartPosition.Manual;
+			guna2TabControl1.TabMenuOrientation = TabMenuOrientation.HorizontalTop;
 
-            if (Screen.PrimaryScreen!=null)
-            {
+			if (Screen.PrimaryScreen != null)
+			{
 				Rectangle workingArea = Screen.PrimaryScreen.Bounds;
 				int x = workingArea.Right - Width;
 				int y = workingArea.Bottom - Height;
 				Location = new Point(x, y);
 			}
 
-			MaximizeBox = false;
 			MinimizeBox = false;
 			HideApp();
 
@@ -70,6 +71,11 @@ namespace ChargingControllerApp
 			}
 		}
 
+		private void guna2Button2_Click(object sender, EventArgs e)
+		{
+			Hide();
+		}
+
 		private void HideApp()
 		{
 			WindowState = FormWindowState.Minimized;
@@ -83,5 +89,19 @@ namespace ChargingControllerApp
 			ShowInTaskbar = true;
 			Visible = true;
 		}
+
+		private void DisplayServerConnection(bool isConnected)
+		{
+            if (isConnected)
+            {
+				ServerConnectedImg.Visible = true;
+				ServerDisconnectedImg.Visible = false;
+			}
+			else
+			{
+				ServerConnectedImg.Visible = false;
+				ServerDisconnectedImg.Visible = true;
+			}
+        }
 	}
 }
