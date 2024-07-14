@@ -53,6 +53,8 @@ namespace ChargingControllerApp
 			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
 			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
 			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
 			notifyIcon = new NotifyIcon(components);
 			contextMenuStrip1 = new ContextMenuStrip(components);
 			toolStripMenuItem1 = new ToolStripMenuItem();
@@ -69,14 +71,15 @@ namespace ChargingControllerApp
 			guna2HtmlLabel1 = new Guna2HtmlLabel();
 			batteryMaxSlider = new Guna2TrackBar();
 			ModeInfoToolTip = new Guna2PictureBox();
-			guna2ComboBox1 = new Guna2ComboBox();
+			modeSelectorCB = new Guna2ComboBox();
 			guna2HtmlLabel5 = new Guna2HtmlLabel();
 			tabPage1 = new TabPage();
+			serverTokentTB = new Guna2TextBox();
+			ipErrorLabel = new Guna2HtmlLabel();
 			serverConnectionLoading = new Guna2CircleProgressBar();
-			guna2Button1 = new Guna2Button();
-			guna2TextBox4 = new Guna2TextBox();
+			connectToServerBn = new Guna2Button();
 			guna2HtmlLabel4 = new Guna2HtmlLabel();
-			guna2TextBox3 = new Guna2TextBox();
+			serverIpInput = new Guna2TextBox();
 			guna2HtmlLabel3 = new Guna2HtmlLabel();
 			guna2HtmlLabel2 = new Guna2HtmlLabel();
 			guna2Button2 = new Guna2Button();
@@ -89,7 +92,9 @@ namespace ChargingControllerApp
 			guna2HtmlToolTip2 = new Guna2HtmlToolTip();
 			NotChargingImg = new Guna2PictureBox();
 			guna2HtmlToolTip3 = new Guna2HtmlToolTip();
-			MainTimer = new System.Windows.Forms.Timer(components);
+			mainTimer = new System.Windows.Forms.Timer(components);
+			statusMessageTB = new Guna2TextBox();
+			textOverflowTimer = new System.Windows.Forms.Timer(components);
 			contextMenuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			guna2TabControl1.SuspendLayout();
@@ -177,10 +182,10 @@ namespace ChargingControllerApp
 			guna2TabControl1.Controls.Add(tabPage1);
 			guna2TabControl1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			guna2TabControl1.ItemSize = new Size(180, 40);
-			guna2TabControl1.Location = new Point(1, 161);
+			guna2TabControl1.Location = new Point(0, 219);
 			guna2TabControl1.Name = "guna2TabControl1";
 			guna2TabControl1.SelectedIndex = 0;
-			guna2TabControl1.Size = new Size(375, 325);
+			guna2TabControl1.Size = new Size(375, 343);
 			guna2TabControl1.TabButtonHoverState.BorderColor = Color.Empty;
 			guna2TabControl1.TabButtonHoverState.FillColor = Color.FromArgb(40, 52, 70);
 			guna2TabControl1.TabButtonHoverState.Font = new Font("Segoe UI Semibold", 10F);
@@ -212,12 +217,12 @@ namespace ChargingControllerApp
 			tabPage2.Controls.Add(guna2HtmlLabel1);
 			tabPage2.Controls.Add(batteryMaxSlider);
 			tabPage2.Controls.Add(ModeInfoToolTip);
-			tabPage2.Controls.Add(guna2ComboBox1);
+			tabPage2.Controls.Add(modeSelectorCB);
 			tabPage2.Controls.Add(guna2HtmlLabel5);
 			tabPage2.Location = new Point(4, 44);
 			tabPage2.Name = "tabPage2";
 			tabPage2.Padding = new Padding(3);
-			tabPage2.Size = new Size(367, 277);
+			tabPage2.Size = new Size(367, 295);
 			tabPage2.TabIndex = 1;
 			tabPage2.Text = "Power Managment";
 			// 
@@ -245,6 +250,7 @@ namespace ChargingControllerApp
 			// 
 			// batteryMinSlider
 			// 
+			batteryMinSlider.Enabled = false;
 			batteryMinSlider.Location = new Point(25, 223);
 			batteryMinSlider.Maximum = 80;
 			batteryMinSlider.Minimum = 40;
@@ -281,6 +287,7 @@ namespace ChargingControllerApp
 			// 
 			// batteryMaxSlider
 			// 
+			batteryMaxSlider.Enabled = false;
 			batteryMaxSlider.Location = new Point(25, 131);
 			batteryMaxSlider.Maximum = 90;
 			batteryMaxSlider.Minimum = 50;
@@ -308,25 +315,25 @@ namespace ChargingControllerApp
 			ModeInfoToolTip.TabStop = false;
 			guna2HtmlToolTip3.SetToolTip(ModeInfoToolTip, "Note: In this mode the battery will continuously be charged to the specified % and when the charge drops certain % the cycle will be repeated again.");
 			// 
-			// guna2ComboBox1
+			// modeSelectorCB
 			// 
-			guna2ComboBox1.BackColor = Color.Transparent;
-			guna2ComboBox1.CustomizableEdges = customizableEdges3;
-			guna2ComboBox1.DrawMode = DrawMode.OwnerDrawFixed;
-			guna2ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-			guna2ComboBox1.FocusedColor = Color.FromArgb(94, 148, 255);
-			guna2ComboBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-			guna2ComboBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			guna2ComboBox1.ForeColor = Color.FromArgb(33, 42, 57);
-			guna2ComboBox1.ItemHeight = 30;
-			guna2ComboBox1.Items.AddRange(new object[] { "Best Battery Life", "Fully Charge the Battery" });
-			guna2ComboBox1.Location = new Point(28, 45);
-			guna2ComboBox1.Name = "guna2ComboBox1";
-			guna2ComboBox1.ShadowDecoration.CustomizableEdges = customizableEdges4;
-			guna2ComboBox1.Size = new Size(262, 36);
-			guna2ComboBox1.StartIndex = 0;
-			guna2ComboBox1.TabIndex = 3;
-			guna2ComboBox1.SelectedIndexChanged += guna2ComboBox1_SelectedIndexChanged;
+			modeSelectorCB.BackColor = Color.Transparent;
+			modeSelectorCB.CustomizableEdges = customizableEdges3;
+			modeSelectorCB.DrawMode = DrawMode.OwnerDrawFixed;
+			modeSelectorCB.DropDownStyle = ComboBoxStyle.DropDownList;
+			modeSelectorCB.Enabled = false;
+			modeSelectorCB.FocusedColor = Color.FromArgb(94, 148, 255);
+			modeSelectorCB.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+			modeSelectorCB.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			modeSelectorCB.ForeColor = Color.FromArgb(33, 42, 57);
+			modeSelectorCB.ItemHeight = 30;
+			modeSelectorCB.Items.AddRange(new object[] { "Best Battery Life", "Fully Charge the Battery" });
+			modeSelectorCB.Location = new Point(28, 45);
+			modeSelectorCB.Name = "modeSelectorCB";
+			modeSelectorCB.ShadowDecoration.CustomizableEdges = customizableEdges4;
+			modeSelectorCB.Size = new Size(262, 36);
+			modeSelectorCB.StartIndex = 0;
+			modeSelectorCB.TabIndex = 3;
 			// 
 			// guna2HtmlLabel5
 			// 
@@ -342,11 +349,12 @@ namespace ChargingControllerApp
 			// tabPage1
 			// 
 			tabPage1.BackColor = Color.FromArgb(82, 86, 113);
+			tabPage1.Controls.Add(serverTokentTB);
+			tabPage1.Controls.Add(ipErrorLabel);
 			tabPage1.Controls.Add(serverConnectionLoading);
-			tabPage1.Controls.Add(guna2Button1);
-			tabPage1.Controls.Add(guna2TextBox4);
+			tabPage1.Controls.Add(connectToServerBn);
 			tabPage1.Controls.Add(guna2HtmlLabel4);
-			tabPage1.Controls.Add(guna2TextBox3);
+			tabPage1.Controls.Add(serverIpInput);
 			tabPage1.Controls.Add(guna2HtmlLabel3);
 			tabPage1.Controls.Add(guna2HtmlLabel2);
 			tabPage1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -354,12 +362,48 @@ namespace ChargingControllerApp
 			tabPage1.Location = new Point(4, 44);
 			tabPage1.Name = "tabPage1";
 			tabPage1.Padding = new Padding(3);
-			tabPage1.Size = new Size(367, 277);
+			tabPage1.Size = new Size(367, 295);
 			tabPage1.TabIndex = 0;
 			tabPage1.Text = "Server Settings";
 			// 
+			// serverTokentTB
+			// 
+			serverTokentTB.BorderRadius = 10;
+			serverTokentTB.CustomizableEdges = customizableEdges5;
+			serverTokentTB.DefaultText = "";
+			serverTokentTB.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+			serverTokentTB.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+			serverTokentTB.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+			serverTokentTB.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+			serverTokentTB.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+			serverTokentTB.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			serverTokentTB.ForeColor = Color.Black;
+			serverTokentTB.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+			serverTokentTB.Location = new Point(77, 178);
+			serverTokentTB.Margin = new Padding(4, 6, 4, 6);
+			serverTokentTB.Name = "serverTokentTB";
+			serverTokentTB.PasswordChar = '\0';
+			serverTokentTB.PlaceholderText = "";
+			serverTokentTB.SelectedText = "";
+			serverTokentTB.ShadowDecoration.CustomizableEdges = customizableEdges6;
+			serverTokentTB.Size = new Size(201, 35);
+			serverTokentTB.TabIndex = 9;
+			// 
+			// ipErrorLabel
+			// 
+			ipErrorLabel.AutoSize = false;
+			ipErrorLabel.BackColor = Color.Transparent;
+			ipErrorLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			ipErrorLabel.ForeColor = Color.FromArgb(37, 246, 32);
+			ipErrorLabel.Location = new Point(78, 119);
+			ipErrorLabel.Name = "ipErrorLabel";
+			ipErrorLabel.Size = new Size(232, 34);
+			ipErrorLabel.TabIndex = 8;
+			ipErrorLabel.Text = null;
+			// 
 			// serverConnectionLoading
 			// 
+			serverConnectionLoading.Animated = true;
 			serverConnectionLoading.FillColor = Color.FromArgb(200, 213, 218, 223);
 			serverConnectionLoading.FillThickness = 5;
 			serverConnectionLoading.Font = new Font("Segoe UI", 12F);
@@ -370,92 +414,74 @@ namespace ChargingControllerApp
 			serverConnectionLoading.ProgressColor = Color.FromArgb(37, 246, 32);
 			serverConnectionLoading.ProgressColor2 = Color.FromArgb(37, 246, 32);
 			serverConnectionLoading.ProgressThickness = 5;
-			serverConnectionLoading.ShadowDecoration.CustomizableEdges = customizableEdges5;
+			serverConnectionLoading.ShadowDecoration.CustomizableEdges = customizableEdges7;
 			serverConnectionLoading.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
 			serverConnectionLoading.Size = new Size(38, 38);
 			serverConnectionLoading.TabIndex = 7;
 			serverConnectionLoading.Text = "guna2CircleProgressBar1";
 			serverConnectionLoading.Visible = false;
 			// 
-			// guna2Button1
+			// connectToServerBn
 			// 
-			guna2Button1.BorderRadius = 10;
-			guna2Button1.CustomizableEdges = customizableEdges6;
-			guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-			guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-			guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-			guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-			guna2Button1.FillColor = Color.FromArgb(37, 246, 32);
-			guna2Button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			guna2Button1.ForeColor = Color.FromArgb(40, 42, 55);
-			guna2Button1.Location = new Point(102, 227);
-			guna2Button1.Name = "guna2Button1";
-			guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges7;
-			guna2Button1.Size = new Size(143, 45);
-			guna2Button1.TabIndex = 5;
-			guna2Button1.Text = "Connect";
-			// 
-			// guna2TextBox4
-			// 
-			guna2TextBox4.BorderRadius = 10;
-			guna2TextBox4.CustomizableEdges = customizableEdges8;
-			guna2TextBox4.DefaultText = "";
-			guna2TextBox4.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-			guna2TextBox4.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-			guna2TextBox4.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-			guna2TextBox4.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-			guna2TextBox4.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-			guna2TextBox4.Font = new Font("Segoe UI", 9F);
-			guna2TextBox4.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-			guna2TextBox4.Location = new Point(78, 169);
-			guna2TextBox4.Margin = new Padding(3, 4, 3, 4);
-			guna2TextBox4.Name = "guna2TextBox4";
-			guna2TextBox4.PasswordChar = '\0';
-			guna2TextBox4.PlaceholderText = "";
-			guna2TextBox4.SelectedText = "";
-			guna2TextBox4.ShadowDecoration.CustomizableEdges = customizableEdges9;
-			guna2TextBox4.Size = new Size(200, 36);
-			guna2TextBox4.TabIndex = 4;
+			connectToServerBn.BorderRadius = 10;
+			connectToServerBn.CustomizableEdges = customizableEdges8;
+			connectToServerBn.DisabledState.BorderColor = Color.DarkGray;
+			connectToServerBn.DisabledState.CustomBorderColor = Color.FromArgb(176, 255, 194);
+			connectToServerBn.DisabledState.FillColor = Color.FromArgb(176, 255, 194);
+			connectToServerBn.DisabledState.ForeColor = Color.Black;
+			connectToServerBn.Enabled = false;
+			connectToServerBn.FillColor = Color.FromArgb(37, 246, 32);
+			connectToServerBn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			connectToServerBn.ForeColor = Color.FromArgb(40, 42, 55);
+			connectToServerBn.Location = new Point(88, 239);
+			connectToServerBn.Name = "connectToServerBn";
+			connectToServerBn.ShadowDecoration.CustomizableEdges = customizableEdges9;
+			connectToServerBn.Size = new Size(179, 45);
+			connectToServerBn.TabIndex = 5;
+			connectToServerBn.Text = "Connect";
+			connectToServerBn.Click += ConnectToServerBn_Click;
 			// 
 			// guna2HtmlLabel4
 			// 
 			guna2HtmlLabel4.BackColor = Color.Transparent;
 			guna2HtmlLabel4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			guna2HtmlLabel4.ForeColor = Color.White;
-			guna2HtmlLabel4.Location = new Point(78, 140);
+			guna2HtmlLabel4.Location = new Point(78, 152);
 			guna2HtmlLabel4.Name = "guna2HtmlLabel4";
 			guna2HtmlLabel4.Size = new Size(116, 23);
 			guna2HtmlLabel4.TabIndex = 3;
 			guna2HtmlLabel4.Text = "Security Token";
 			// 
-			// guna2TextBox3
+			// serverIpInput
 			// 
-			guna2TextBox3.BorderRadius = 10;
-			guna2TextBox3.CustomizableEdges = customizableEdges10;
-			guna2TextBox3.DefaultText = "";
-			guna2TextBox3.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-			guna2TextBox3.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-			guna2TextBox3.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-			guna2TextBox3.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-			guna2TextBox3.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-			guna2TextBox3.Font = new Font("Segoe UI", 9F);
-			guna2TextBox3.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-			guna2TextBox3.Location = new Point(78, 92);
-			guna2TextBox3.Margin = new Padding(3, 4, 3, 4);
-			guna2TextBox3.Name = "guna2TextBox3";
-			guna2TextBox3.PasswordChar = '\0';
-			guna2TextBox3.PlaceholderText = "";
-			guna2TextBox3.SelectedText = "";
-			guna2TextBox3.ShadowDecoration.CustomizableEdges = customizableEdges11;
-			guna2TextBox3.Size = new Size(200, 36);
-			guna2TextBox3.TabIndex = 2;
+			serverIpInput.BorderRadius = 10;
+			serverIpInput.CustomizableEdges = customizableEdges10;
+			serverIpInput.DefaultText = "";
+			serverIpInput.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+			serverIpInput.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+			serverIpInput.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+			serverIpInput.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+			serverIpInput.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+			serverIpInput.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			serverIpInput.ForeColor = Color.Black;
+			serverIpInput.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+			serverIpInput.Location = new Point(78, 83);
+			serverIpInput.Margin = new Padding(4, 6, 4, 6);
+			serverIpInput.Name = "serverIpInput";
+			serverIpInput.PasswordChar = '\0';
+			serverIpInput.PlaceholderText = "";
+			serverIpInput.SelectedText = "";
+			serverIpInput.ShadowDecoration.CustomizableEdges = customizableEdges11;
+			serverIpInput.Size = new Size(201, 35);
+			serverIpInput.TabIndex = 2;
+			serverIpInput.TextChanged += guna2TextBox3_TextChanged;
 			// 
 			// guna2HtmlLabel3
 			// 
 			guna2HtmlLabel3.BackColor = Color.Transparent;
 			guna2HtmlLabel3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			guna2HtmlLabel3.ForeColor = Color.White;
-			guna2HtmlLabel3.Location = new Point(78, 63);
+			guna2HtmlLabel3.Location = new Point(79, 53);
 			guna2HtmlLabel3.Name = "guna2HtmlLabel3";
 			guna2HtmlLabel3.Size = new Size(70, 23);
 			guna2HtmlLabel3.TabIndex = 1;
@@ -601,17 +627,50 @@ namespace ChargingControllerApp
 			guna2HtmlToolTip3.ReshowDelay = 100;
 			guna2HtmlToolTip3.ToolTipTitle = "Mode Description";
 			// 
-			// MainTimer
+			// mainTimer
 			// 
-			MainTimer.Interval = 1000;
-			MainTimer.Tick += MainTimer_Tick;
+			mainTimer.Interval = 1000;
+			mainTimer.Tick += MainTimer_Tick;
+			// 
+			// statusMessageTB
+			// 
+			statusMessageTB.BorderRadius = 4;
+			statusMessageTB.CustomizableEdges = customizableEdges22;
+			statusMessageTB.DefaultText = "Not Connected";
+			statusMessageTB.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+			statusMessageTB.DisabledState.FillColor = Color.FromArgb(255, 132, 135);
+			statusMessageTB.DisabledState.ForeColor = Color.Black;
+			statusMessageTB.DisabledState.PlaceholderForeColor = Color.Black;
+			statusMessageTB.Enabled = false;
+			statusMessageTB.FillColor = Color.FromArgb(218, 254, 225);
+			statusMessageTB.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+			statusMessageTB.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			statusMessageTB.ForeColor = Color.Black;
+			statusMessageTB.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+			statusMessageTB.Location = new Point(3, 168);
+			statusMessageTB.Margin = new Padding(6, 8, 6, 8);
+			statusMessageTB.Name = "statusMessageTB";
+			statusMessageTB.PasswordChar = '\0';
+			statusMessageTB.PlaceholderText = "";
+			statusMessageTB.ReadOnly = true;
+			statusMessageTB.SelectedText = "";
+			statusMessageTB.ShadowDecoration.CustomizableEdges = customizableEdges23;
+			statusMessageTB.Size = new Size(354, 32);
+			statusMessageTB.TabIndex = 23;
+			statusMessageTB.TextAlign = HorizontalAlignment.Center;
+			// 
+			// textOverflowTimer
+			// 
+			textOverflowTimer.Interval = 500;
+			textOverflowTimer.Tick += textOverflowTimer_Tick;
 			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(40, 42, 55);
-			ClientSize = new Size(360, 488);
+			ClientSize = new Size(360, 563);
+			Controls.Add(statusMessageTB);
 			Controls.Add(NotChargingImg);
 			Controls.Add(ServerDisconnectedImg);
 			Controls.Add(ChargingImg);
@@ -657,10 +716,9 @@ namespace ChargingControllerApp
 		private TabPage tabPage1;
 		private TabPage tabPage2;
 		private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
-		private Guna.UI2.WinForms.Guna2Button guna2Button1;
-		private Guna.UI2.WinForms.Guna2TextBox guna2TextBox4;
+		private Guna.UI2.WinForms.Guna2Button connectToServerBn;
 		private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
-		private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
+		private Guna.UI2.WinForms.Guna2TextBox serverIpInput;
 		private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
 		private Guna.UI2.WinForms.Guna2CircleProgressBar serverConnectionLoading;
 		private Guna.UI2.WinForms.Guna2Button guna2Button2;
@@ -672,7 +730,7 @@ namespace ChargingControllerApp
 		private Guna.UI2.WinForms.Guna2PictureBox ServerDisconnectedImg;
 		private Guna.UI2.WinForms.Guna2HtmlToolTip guna2HtmlToolTip2;
 		private Guna.UI2.WinForms.Guna2PictureBox NotChargingImg;
-		private Guna2ComboBox guna2ComboBox1;
+		private Guna2ComboBox modeSelectorCB;
 		private Guna2HtmlLabel guna2HtmlLabel5;
 		private Guna2HtmlToolTip guna2HtmlToolTip3;
 		private Guna2PictureBox ModeInfoToolTip;
@@ -682,6 +740,10 @@ namespace ChargingControllerApp
 		private Guna2HtmlLabel MinBatteryLabel;
 		private Guna2HtmlLabel guna2HtmlLabel7;
 		private Guna2TrackBar batteryMinSlider;
-		private System.Windows.Forms.Timer MainTimer;
+		private System.Windows.Forms.Timer mainTimer;
+		private Guna2HtmlLabel ipErrorLabel;
+		private Guna2TextBox serverTokentTB;
+		private Guna2TextBox statusMessageTB;
+		private System.Windows.Forms.Timer textOverflowTimer;
 	}
 }

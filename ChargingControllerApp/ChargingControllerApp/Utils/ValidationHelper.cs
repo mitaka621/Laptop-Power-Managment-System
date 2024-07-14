@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ChargingControllerApp.Utils
@@ -11,7 +12,11 @@ namespace ChargingControllerApp.Utils
 	{
 		public static bool IsIpValid(string ip)
 		{
-			if (!IPAddress.TryParse(ip, out IPAddress? parsedIp))
+			string regPattern = @"\d{3}\.\d{3}\.\d{1,3}\.\d{1,3}";
+
+			Regex reg = new(regPattern);
+
+			if (!reg.IsMatch(ip)||!IPAddress.TryParse(ip, out IPAddress? parsedIp))
 			{
 				return false;
 			}

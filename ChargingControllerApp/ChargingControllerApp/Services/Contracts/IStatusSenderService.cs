@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChargingControllerApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace ChargingControllerApp.Services.Contracts
 {
 	public interface IStatusSenderService
 	{
-		Task<bool> SendLaptopData();
+		Task<ResponseMessageModel?> SendLaptopData();
+
+		Task<bool> CheckStatus();
 	}
 }

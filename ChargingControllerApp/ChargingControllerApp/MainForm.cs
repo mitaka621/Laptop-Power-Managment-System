@@ -1,7 +1,11 @@
 using ChargingControllerApp.Services;
 using ChargingControllerApp.Services.Contracts;
+using ChargingControllerApp.Utils;
 using Guna.UI2.WinForms;
+using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace ChargingControllerApp
@@ -12,6 +16,9 @@ namespace ChargingControllerApp
 		private const int HTCAPTION = 0x2;
 
 		private readonly IDataExtractionService _extractionService = new DataExtractionService();
+		private readonly IDataManagerService _dataManagerService = new DataManagerService();
+
+		private IStatusSenderService? _statusSenderService;
 
 		public MainForm()
 		{
@@ -32,7 +39,19 @@ namespace ChargingControllerApp
 
 			FormClosing += new FormClosingEventHandler(MainForm_FormClosing);
 
-			MainTimer.Start();
+			if (File.Exists("serverInfo.txt") && File.Exists("token.txt"))
+			{
+				DisplayErrorStatus("Trying to connect....");
+
+				DisableServerConnectionInput();
+
+				EnableBatteryInputs();
+
+				mainTimer.Start();
+
+				_statusSenderService = new StatusSenderService(_extractionService, _dataManagerService);
+			}
+			textOverflowTimer.Start();
 		}
 
 		protected override void WndProc(ref Message m)
@@ -47,15 +66,7 @@ namespace ChargingControllerApp
 
 		private void notifyIcon_MouseDoubleClick(object Sender, EventArgs e)
 		{
-			if (WindowState == FormWindowState.Minimized)
-			{
-				ShowApp();
-			}
-			else
-			{
-				HideApp();
-			}
-
+			ShowApp();
 			Activate();
 		}
 
@@ -121,12 +132,9 @@ namespace ChargingControllerApp
 				percentage = 0;
 			}
 
+			serverConnectionLoading.Visible = true;
+
 			serverConnectionLoading.Value = percentage;
-		}
-
-		private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-		{
-
 		}
 
 		private void guna2TrackBar1_Scroll(object sender, ScrollEventArgs e)
@@ -175,9 +183,152 @@ namespace ChargingControllerApp
 			MinBatteryLabel.Text = value.ToString() + "%";
 		}
 
-		private void MainTimer_Tick(object sender, EventArgs e)
+		private async void MainTimer_Tick(object sender, EventArgs e)
 		{
+			if (_statusSenderService == null)
+			{
+				DisplayServerConnectionLost("Failed to send request to server");
+				return;
+			}
+
+			try
+			{
+				var response = await _statusSenderService.SendLaptopData();
+
+                if (response==null)
+                {
+					DisplayErrorStatus("Could not parse response!");
+					return;
+				}
+
+                if (response.OverrideActive)
+                {
+					DisplayErrorStatus("Override activated. Controls disabled!");
+					DisableBatteryInputs();
+				}
+
+				switch (response.SmartChargingStatus)
+				{
+					case Enums.SmartChargingStates.Activated:
+						NotChargingImg.Visible = false;
+						ChargingImg.Visible = true;
+						break;
+					case Enums.SmartChargingStates.Deactivated:
+						NotChargingImg.Visible = true;
+						ChargingImg.Visible= false;
+						break;
+					case Enums.SmartChargingStates.WaitingToDischarge:
+						break;
+				}
+
+				DisplayOkStatus(response.ResponseMessage);
+            }
+			catch (Exception)
+			{
+				DisplayServerConnectionLost("The request was not successful");
+			}
 
 		}
+
+		private void DisableServerConnectionInput()
+		{
+			serverIpInput.Enabled = false;
+			serverTokentTB.Enabled = false;
+			connectToServerBn.Enabled = false;
+
+			connectToServerBn.Text = "Already Connected";
+		}
+
+		private void EnableServerConnectionInput()
+		{
+			serverIpInput.Enabled = true;
+			serverTokentTB.Enabled = true;
+			connectToServerBn.Enabled = true;
+
+			connectToServerBn.Text = "Connect";
+		}
+
+		private void DisableBatteryInputs()
+		{
+			modeSelectorCB.Enabled=false;
+			batteryMaxSlider.Enabled=false;
+			batteryMinSlider.Enabled=false;	
+		}
+
+		private void EnableBatteryInputs()
+		{
+			modeSelectorCB.Enabled = true;
+			batteryMaxSlider.Enabled = true;
+			batteryMinSlider.Enabled = true;
+		}
+
+		private void DisplayServerConnectionLost(string message)
+		{
+			DisplayServerConnection(false);
+			ShowApp();
+			guna2TabControl1.SelectTab(1);
+			EnableServerConnectionInput();
+			DisplayErrorStatus(message);
+			DisableBatteryInputs();
+
+			mainTimer.Stop();
+		}
+
+		private void DisplayErrorStatus(string message)
+		{
+			statusMessageTB.Text = message;
+			statusMessageTB.DisabledState.FillColor = Color.FromArgb(255, 189, 191);
+		}
+
+		private void DisplayOkStatus(string message)
+		{
+			statusMessageTB.Text = message;
+			statusMessageTB.DisabledState.FillColor = Color.FromArgb(218, 254, 225);
+		}
+
+		private void guna2TextBox3_TextChanged(object sender, EventArgs e)
+		{
+			if (!ValidationHelper.IsIpValid(serverIpInput.Text))
+			{
+				ipErrorLabel.Text = "A local ip in the format 111.111.111.111 expected!";
+				connectToServerBn.Enabled = false;
+
+				return;
+			}
+
+			ipErrorLabel.Text = "";
+			connectToServerBn.Enabled = true;
+		}
+
+		private void textOverflowTimer_Tick(object sender, EventArgs e)
+		{
+			if (statusMessageTB.Text.Length > 40)
+			{
+				string? newStr = new string(statusMessageTB.Text.Skip(1).Append(statusMessageTB.Text[0]).ToArray());
+
+				statusMessageTB.Text = newStr;
+			}
+		}
+
+		private async void ConnectToServerBn_Click(object sender, EventArgs e)
+		{
+			DisplayServerConnectionPercentage(30);
+			_dataManagerService.SaveEncryptedToken(serverTokentTB.Text);	
+			_dataManagerService.SaveServerIp(serverIpInput.Text);
+
+			DisplayServerConnectionPercentage(60);
+			_statusSenderService =new StatusSenderService(_extractionService, _dataManagerService);
+
+
+            var result=await _statusSenderService.CheckStatus();
+
+			DisplayServerConnectionPercentage(100);
+			DisplayServerConnection(result);
+
+            if (result)
+            {
+				DisableServerConnectionInput();
+			}
+        }
 	}
 }
