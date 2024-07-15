@@ -13,6 +13,8 @@ namespace ChargingControllerApp.Models
         [JsonPropertyName("message")]
         public string ResponseMessage { get; set; }=string.Empty;
 
+		[JsonPropertyName("isError")]
+		public bool IsError { get; set; }
 		[JsonPropertyName("overrideActive")]
 		public bool OverrideActive { get; set; }
 

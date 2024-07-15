@@ -313,7 +313,7 @@ namespace ChargingControllerApp
 			ModeInfoToolTip.Size = new Size(25, 28);
 			ModeInfoToolTip.TabIndex = 22;
 			ModeInfoToolTip.TabStop = false;
-			guna2HtmlToolTip3.SetToolTip(ModeInfoToolTip, "Note: In this mode the battery will continuously be charged to the specified % and when the charge drops certain % the cycle will be repeated again.");
+			guna2HtmlToolTip3.SetToolTip(ModeInfoToolTip, resources.GetString("ModeInfoToolTip.ToolTip"));
 			// 
 			// modeSelectorCB
 			// 
@@ -327,13 +327,14 @@ namespace ChargingControllerApp
 			modeSelectorCB.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			modeSelectorCB.ForeColor = Color.FromArgb(33, 42, 57);
 			modeSelectorCB.ItemHeight = 30;
-			modeSelectorCB.Items.AddRange(new object[] { "Best Battery Life", "Fully Charge the Battery" });
+			modeSelectorCB.Items.AddRange(new object[] { "Best Battery Life", "Constant Battery Level", "Off" });
 			modeSelectorCB.Location = new Point(28, 45);
 			modeSelectorCB.Name = "modeSelectorCB";
 			modeSelectorCB.ShadowDecoration.CustomizableEdges = customizableEdges4;
 			modeSelectorCB.Size = new Size(262, 36);
 			modeSelectorCB.StartIndex = 0;
 			modeSelectorCB.TabIndex = 3;
+			modeSelectorCB.SelectedIndexChanged += modeSelectorCB_SelectedIndexChanged;
 			// 
 			// guna2HtmlLabel5
 			// 
@@ -661,7 +662,6 @@ namespace ChargingControllerApp
 			// 
 			// textOverflowTimer
 			// 
-			textOverflowTimer.Interval = 500;
 			textOverflowTimer.Tick += textOverflowTimer_Tick;
 			// 
 			// MainForm

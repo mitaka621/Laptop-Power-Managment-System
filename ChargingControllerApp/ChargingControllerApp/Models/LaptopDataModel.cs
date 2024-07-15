@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChargingControllerApp.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,5 +28,11 @@ namespace ChargingControllerApp.Models
 				batteryPercentage = value;
             }
 		}
-	}
+
+		public ChargingModes CurrentChargingMode { get; set; }
+
+        public int MaxPercentage { get; set; }
+
+        public int MinPercentage { get; set; }
+    }
 }

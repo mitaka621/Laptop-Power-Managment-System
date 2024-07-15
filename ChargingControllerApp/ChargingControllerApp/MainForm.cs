@@ -1,3 +1,4 @@
+using ChargingControllerApp.Enums;
 using ChargingControllerApp.Services;
 using ChargingControllerApp.Services.Contracts;
 using ChargingControllerApp.Utils;
@@ -20,6 +21,10 @@ namespace ChargingControllerApp
 
 		private IStatusSenderService? _statusSenderService;
 
+		private ChargingModes currentChargingMode = 0;
+		private int maxPercentage=80;
+		private int minPercentage = 60;
+
 		public MainForm()
 		{
 			InitializeComponent();
@@ -39,7 +44,18 @@ namespace ChargingControllerApp
 
 			FormClosing += new FormClosingEventHandler(MainForm_FormClosing);
 
-			if (File.Exists("serverInfo.txt") && File.Exists("token.txt"))
+			textOverflowTimer.Start();
+
+            if (File.Exists("misc.txt"))
+            {
+				int savedMode = int.Parse(File.ReadAllText("misc.txt"));
+
+				SelectMode(savedMode);
+
+				modeSelectorCB.SelectedIndex = savedMode;
+            }
+
+            if (File.Exists("serverInfo.txt") && File.Exists("token.txt"))
 			{
 				DisplayErrorStatus("Trying to connect....");
 
@@ -47,11 +63,19 @@ namespace ChargingControllerApp
 
 				EnableBatteryInputs();
 
-				mainTimer.Start();
+				try
+				{
+					_statusSenderService = new StatusSenderService(_extractionService, _dataManagerService);
+				}
+				catch (Exception ex)
+				{
+					DisplayServerConnectionLost(ex.Message);
+					return;
+				}
 
-				_statusSenderService = new StatusSenderService(_extractionService, _dataManagerService);
+				mainTimer.Start();
 			}
-			textOverflowTimer.Start();
+			
 		}
 
 		protected override void WndProc(ref Message m)
@@ -101,7 +125,7 @@ namespace ChargingControllerApp
 		private void ShowApp()
 		{
 			WindowState = FormWindowState.Normal;
-			ShowInTaskbar = true;
+			ShowInTaskbar = false;
 			Visible = true;
 		}
 
@@ -158,6 +182,8 @@ namespace ChargingControllerApp
 			}
 
 			MaxBatteryLabel.Text = value.ToString() + "%";
+
+			maxPercentage = value;
 		}
 
 		private void batteryMinSlider_Scroll(object sender, ScrollEventArgs e)
@@ -181,10 +207,13 @@ namespace ChargingControllerApp
 			}
 
 			MinBatteryLabel.Text = value.ToString() + "%";
+
+			minPercentage= value;
 		}
 
 		private async void MainTimer_Tick(object sender, EventArgs e)
 		{
+			mainTimer.Stop();
 			if (_statusSenderService == null)
 			{
 				DisplayServerConnectionLost("Failed to send request to server");
@@ -193,41 +222,59 @@ namespace ChargingControllerApp
 
 			try
 			{
-				var response = await _statusSenderService.SendLaptopData();
+				var response = await _statusSenderService.SendLaptopData(currentChargingMode,minPercentage,maxPercentage);
 
-                if (response==null)
-                {
+				if (response == null)
+				{
 					DisplayErrorStatus("Could not parse response!");
 					return;
-				}
-
-                if (response.OverrideActive)
-                {
-					DisplayErrorStatus("Override activated. Controls disabled!");
-					DisableBatteryInputs();
-				}
+				}			
 
 				switch (response.SmartChargingStatus)
 				{
-					case Enums.SmartChargingStates.Activated:
+					case SmartChargingStates.Activated:
 						NotChargingImg.Visible = false;
 						ChargingImg.Visible = true;
 						break;
-					case Enums.SmartChargingStates.Deactivated:
+					case SmartChargingStates.Deactivated:
 						NotChargingImg.Visible = true;
-						ChargingImg.Visible= false;
+						ChargingImg.Visible = false;
 						break;
-					case Enums.SmartChargingStates.WaitingToDischarge:
+					case SmartChargingStates.WaitingToDischarge:
 						break;
 				}
 
-				DisplayOkStatus(response.ResponseMessage);
-            }
-			catch (Exception)
+				DisplayServerConnection(true);
+
+				if (response.OverrideActive)
+				{
+					DisplayErrorStatus("Override activated. Controls disabled!");
+					DisableBatteryInputs();
+
+					mainTimer.Start();
+					return;
+				}
+				else
+				{
+					SelectMode(modeSelectorCB.SelectedIndex);
+				}
+
+				if (response.IsError)
+				{
+					DisplayErrorStatus(response.ResponseMessage);
+					ShowApp();
+				}
+				else
+				{
+					DisplayOkStatus(response.ResponseMessage);
+				}			
+			}
+			catch (Exception ex)
 			{
-				DisplayServerConnectionLost("The request was not successful");
+				DisplayServerConnectionLost("The request was not successful - "+ex.Message);
 			}
 
+			mainTimer.Start();
 		}
 
 		private void DisableServerConnectionInput()
@@ -243,16 +290,15 @@ namespace ChargingControllerApp
 		{
 			serverIpInput.Enabled = true;
 			serverTokentTB.Enabled = true;
-			connectToServerBn.Enabled = true;
 
 			connectToServerBn.Text = "Connect";
 		}
 
 		private void DisableBatteryInputs()
 		{
-			modeSelectorCB.Enabled=false;
-			batteryMaxSlider.Enabled=false;
-			batteryMinSlider.Enabled=false;	
+			modeSelectorCB.Enabled = false;
+			batteryMaxSlider.Enabled = false;
+			batteryMinSlider.Enabled = false;
 		}
 
 		private void EnableBatteryInputs()
@@ -313,22 +359,67 @@ namespace ChargingControllerApp
 		private async void ConnectToServerBn_Click(object sender, EventArgs e)
 		{
 			DisplayServerConnectionPercentage(30);
-			_dataManagerService.SaveEncryptedToken(serverTokentTB.Text);	
+			_dataManagerService.SaveEncryptedToken(serverTokentTB.Text);
 			_dataManagerService.SaveServerIp(serverIpInput.Text);
 
 			DisplayServerConnectionPercentage(60);
-			_statusSenderService =new StatusSenderService(_extractionService, _dataManagerService);
+			_statusSenderService = new StatusSenderService(_extractionService, _dataManagerService);
 
 
-            var result=await _statusSenderService.CheckStatus();
+			var result = await _statusSenderService.CheckStatus();
 
 			DisplayServerConnectionPercentage(100);
 			DisplayServerConnection(result);
 
-            if (result)
-            {
+			if (result)
+			{
 				DisableServerConnectionInput();
+
+				EnableBatteryInputs();
+
+				mainTimer.Start();
+
+				DisplayOkStatus("Connected");
 			}
-        }
+			else
+			{
+				DisplayErrorStatus("Could not reach server...");
+			}
+		}
+
+		private void modeSelectorCB_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			File.WriteAllText("misc.txt", modeSelectorCB.SelectedIndex.ToString());
+			currentChargingMode = (ChargingModes)modeSelectorCB.SelectedIndex;
+
+			SelectMode(modeSelectorCB.SelectedIndex);
+		}
+
+		private void SelectMode(int mode)
+		{
+			
+			switch (modeSelectorCB.SelectedIndex)
+			{
+				//best battery life
+				case 0:
+					EnableBatteryInputs();
+					guna2HtmlToolTip3.SetToolTip(ModeInfoToolTip, "Note: In this mode the battery will continuously be charged to the specified % and when this level is reached the charging will be stopped until the battery % drops to the specified minimum level. (this is repeated)");
+					break;
+				//charge to a given %
+				case 1:
+					modeSelectorCB.Enabled = true;
+					batteryMaxSlider.Enabled = true;
+					batteryMinSlider.Enabled = false;
+					guna2HtmlToolTip3.SetToolTip(ModeInfoToolTip, "Note: The battery will be charged to a constant level.");
+					break;
+				//stop charging
+				case 2:
+					modeSelectorCB.Enabled = true;
+					batteryMinSlider.Enabled = false;
+					batteryMaxSlider.Enabled = false;
+					guna2HtmlToolTip3.SetToolTip(ModeInfoToolTip, "Note: The smart charging is stopped");
+					break;
+			}
+		}
 	}
 }

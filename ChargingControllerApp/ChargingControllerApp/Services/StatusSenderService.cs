@@ -1,4 +1,5 @@
-﻿using ChargingControllerApp.Models;
+﻿using ChargingControllerApp.Enums;
+using ChargingControllerApp.Models;
 using ChargingControllerApp.Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -29,14 +30,18 @@ namespace ChargingControllerApp.Services
 			_httpClient.DefaultRequestHeaders.Add("token", _dataManagerService.ReadEncryptedToken());
 		}
 
-        public async Task<ResponseMessageModel?> SendLaptopData()
+        public async Task<ResponseMessageModel?> SendLaptopData(ChargingModes chargingMode, int minPercentage, int maxPercentage)
 		{
 			var laptopData = _dataExtractionService.GetBasicBatteryData();
+			laptopData.CurrentChargingMode=chargingMode;
+			laptopData.MinPercentage=minPercentage;
+			laptopData.MaxPercentage=maxPercentage;
 
 			StringContent content = new(JsonSerializer.Serialize(laptopData), Encoding.UTF8, "application/json");
 
 			var reponse= await _httpClient.PostAsync("/data",content);
-			return JsonSerializer.Deserialize<ResponseMessageModel>(await reponse.Content.ReadAsStringAsync());
+			string body = await reponse.Content.ReadAsStringAsync();
+			return JsonSerializer.Deserialize<ResponseMessageModel>(body);
         }
 
 		public async Task<bool> CheckStatus()
@@ -45,7 +50,7 @@ namespace ChargingControllerApp.Services
 			{
 				var response = await _httpClient.GetAsync("/");
 
-                if (response.StatusCode==HttpStatusCode.OK)
+                if (response.StatusCode==HttpStatusCode.OK&&(await response.Content.ReadAsStringAsync())== "ESP Power Manager - status OK")
                 {
 					return true;
                 }

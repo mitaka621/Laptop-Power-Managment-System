@@ -203,6 +203,9 @@
   <metadata name="guna2HtmlToolTip3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>582, 24</value>
   </metadata>
+  <data name="ModeInfoToolTip.ToolTip" xml:space="preserve">
+    <value>Note: In this mode the battery will continuously be charged to the specified % and when this level is reached the charging will be stopped until the battery % drops to the specified minimum level. (this is repeated)</value>
+  </data>
   <metadata name="guna2HtmlToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>266, 24</value>
   </metadata>

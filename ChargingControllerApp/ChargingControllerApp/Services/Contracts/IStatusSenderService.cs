@@ -1,4 +1,5 @@
-﻿using ChargingControllerApp.Models;
+﻿using ChargingControllerApp.Enums;
+using ChargingControllerApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace ChargingControllerApp.Services.Contracts
 {
 	public interface IStatusSenderService
 	{
-		Task<ResponseMessageModel?> SendLaptopData();
+		Task<ResponseMessageModel?> SendLaptopData(ChargingModes currentChargingMode, int minPercentage, int maxPercentage);
 
 		Task<bool> CheckStatus();
 	}
