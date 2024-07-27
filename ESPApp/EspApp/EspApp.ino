@@ -24,6 +24,8 @@ const char *headerKeys[1] = {"token"};
 
 bool waitingForDischarge=false;
 
+unsigned long currentMillis = 0;
+
 void setup() {
   server.collectHeaders(headerKeys, 1);
   Serial.begin(115200);
@@ -32,6 +34,8 @@ void setup() {
   WiFi.config(staticIP, gateway, subnet, dns);
 
   server.on("/", HTTP_GET, [&]() {
+    currentMillis=millis();
+
     if (strcmp(server.header("token").c_str(), authToken)!=0) {
     Serial.println("Invalid token");
     Serial.println(server.header("token"));
@@ -199,6 +203,11 @@ void loop() {
       Serial.print("Override switch is now ");
       Serial.println(lastSwitchState);
     }
+  }
+
+  if (millis()-currentMillis>=300000 && !relayState && !lastSwitchState) {
+    Serial.println("Charging disabled since contact to the client was lost.");
+    relayState=LOW;
   }
 
   digitalWrite(relayPin, relayState);
