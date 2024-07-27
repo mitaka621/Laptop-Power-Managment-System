@@ -3,7 +3,7 @@
 #include <ArduinoJson.h>
 
 #define switchPin 4
-#define relayPin  3
+#define relayPin  6
 
 bool relayState = LOW;   
 bool lastSwitchState = LOW; 
@@ -74,8 +74,6 @@ void setup() {
     responseObj["overrideActive"]=lastSwitchState;
 
     if (lastSwitchState) {
-      relayState=HIGH;
-
       String response;
       serializeJson(responseObj, response);
 
@@ -191,6 +189,12 @@ void loop() {
     if (currentSwitchState != lastSwitchState) {
       // Update the last switch state
       lastSwitchState = currentSwitchState;
+
+      if (lastSwitchState) {
+        relayState=HIGH;
+      }else{
+        relayState=LOW;
+      }
 
       Serial.print("Override switch is now ");
       Serial.println(lastSwitchState);
