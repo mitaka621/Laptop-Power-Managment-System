@@ -420,6 +420,7 @@ namespace ChargingControllerApp
 			serverConnectionLoading.Size = new Size(38, 38);
 			serverConnectionLoading.TabIndex = 7;
 			serverConnectionLoading.Text = "guna2CircleProgressBar1";
+			serverConnectionLoading.Value = 30;
 			serverConnectionLoading.Visible = false;
 			// 
 			// connectToServerBn

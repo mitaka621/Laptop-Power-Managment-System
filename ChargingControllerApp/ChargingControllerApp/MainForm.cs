@@ -2,12 +2,6 @@ using ChargingControllerApp.Enums;
 using ChargingControllerApp.Services;
 using ChargingControllerApp.Services.Contracts;
 using ChargingControllerApp.Utils;
-using Guna.UI2.WinForms;
-using System.Runtime.CompilerServices;
-using System.Text.RegularExpressions;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace ChargingControllerApp
 {
@@ -22,7 +16,7 @@ namespace ChargingControllerApp
 		private IStatusSenderService? _statusSenderService;
 
 		private ChargingModes currentChargingMode = 0;
-		private int maxPercentage=80;
+		private int maxPercentage = 80;
 		private int minPercentage = 60;
 
 		public MainForm()
@@ -46,16 +40,16 @@ namespace ChargingControllerApp
 
 			textOverflowTimer.Start();
 
-            if (File.Exists("misc.txt"))
-            {
+			if (File.Exists("misc.txt"))
+			{
 				int savedMode = int.Parse(File.ReadAllText("misc.txt"));
 
 				SelectMode(savedMode);
 
 				modeSelectorCB.SelectedIndex = savedMode;
-            }
+			}
 
-            if (File.Exists("serverInfo.txt") && File.Exists("token.txt"))
+			if (File.Exists("serverInfo.txt") && File.Exists("token.txt"))
 			{
 				DisplayErrorStatus("Trying to connect....");
 
@@ -75,7 +69,7 @@ namespace ChargingControllerApp
 
 				mainTimer.Start();
 			}
-			
+
 		}
 
 		protected override void WndProc(ref Message m)
@@ -102,7 +96,7 @@ namespace ChargingControllerApp
 
 		private void exitToolStripMenuItem_Click(object? sender, EventArgs e)
 		{
-			DialogResult dialog = MessageBox.Show("If you exit the app the charging will stop! Do you still want to exit?", "Alert!", MessageBoxButtons.YesNo);
+			DialogResult dialog = MessageBox.Show("If you exit the app you will lose control over the LPM System! Do you still want to exit?", "Alert!", MessageBoxButtons.YesNo);
 
 			if (dialog == DialogResult.Yes)
 			{
@@ -143,22 +137,9 @@ namespace ChargingControllerApp
 			}
 		}
 
-		private void DisplayServerConnectionPercentage(int percentage)
+		private void DisplayServerConnectionLoading(bool show)
 		{
-			if (percentage >= 100)
-			{
-				serverConnectionLoading.Visible = false;
-				return;
-			}
-
-			if (percentage < 0)
-			{
-				percentage = 0;
-			}
-
-			serverConnectionLoading.Visible = true;
-
-			serverConnectionLoading.Value = percentage;
+			serverConnectionLoading.Visible = show;
 		}
 
 		private void guna2TrackBar1_Scroll(object sender, ScrollEventArgs e)
@@ -208,7 +189,7 @@ namespace ChargingControllerApp
 
 			MinBatteryLabel.Text = value.ToString() + "%";
 
-			minPercentage= value;
+			minPercentage = value;
 		}
 
 		private async void MainTimer_Tick(object sender, EventArgs e)
@@ -222,13 +203,13 @@ namespace ChargingControllerApp
 
 			try
 			{
-				var response = await _statusSenderService.SendLaptopData(currentChargingMode,minPercentage,maxPercentage);
+				var response = await _statusSenderService.SendLaptopData(currentChargingMode, minPercentage, maxPercentage);
 
 				if (response == null)
 				{
 					DisplayErrorStatus("Could not parse response!");
 					return;
-				}			
+				}
 
 				switch (response.SmartChargingStatus)
 				{
@@ -267,11 +248,11 @@ namespace ChargingControllerApp
 				else
 				{
 					DisplayOkStatus(response.ResponseMessage);
-				}			
+				}
 			}
 			catch (Exception ex)
 			{
-				DisplayServerConnectionLost("The request was not successful - "+ex.Message);
+				DisplayServerConnectionLost("The request was not successful - " + ex.Message);
 			}
 
 			mainTimer.Start();
@@ -358,17 +339,16 @@ namespace ChargingControllerApp
 
 		private async void ConnectToServerBn_Click(object sender, EventArgs e)
 		{
-			DisplayServerConnectionPercentage(30);
+			DisplayServerConnectionLoading(true);
 			_dataManagerService.SaveEncryptedToken(serverTokentTB.Text);
 			_dataManagerService.SaveServerIp(serverIpInput.Text);
 
-			DisplayServerConnectionPercentage(60);
 			_statusSenderService = new StatusSenderService(_extractionService, _dataManagerService);
 
 
 			var result = await _statusSenderService.CheckStatus();
 
-			DisplayServerConnectionPercentage(100);
+			DisplayServerConnectionLoading(false);
 			DisplayServerConnection(result);
 
 			if (result)
@@ -397,7 +377,7 @@ namespace ChargingControllerApp
 
 		private void SelectMode(int mode)
 		{
-			
+
 			switch (modeSelectorCB.SelectedIndex)
 			{
 				//best battery life
