@@ -121,7 +121,7 @@ namespace ChargingControllerApp
 			// 
 			notifyIcon.ContextMenuStrip = contextMenuStrip1;
 			notifyIcon.Icon = (Icon)resources.GetObject("notifyIcon.Icon");
-			notifyIcon.Text = "notifyIcon";
+			notifyIcon.Text = "LPM System";
 			notifyIcon.Visible = true;
 			notifyIcon.MouseDoubleClick += notifyIcon_MouseDoubleClick;
 			// 

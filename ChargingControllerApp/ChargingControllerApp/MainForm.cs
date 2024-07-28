@@ -265,7 +265,6 @@ namespace ChargingControllerApp
 
 			_statusSenderService = new StatusSenderService(_extractionService, _dataManagerService);
 
-
 			var result = await _statusSenderService.CheckStatus();
 
 			_uiHelper.DisplayServerConnectionStateLoading(false);
