@@ -85,9 +85,20 @@ void setup() {
       return;
     }
 
-     if (isCharging&&!relayState&&currentMode!=2) {
+    if (isCharging&&!relayState&&currentMode!=2) {
       responseObj["message"]="Unplug regular charger first";
       responseObj["smartChargingStatus"]=1;
+      responseObj["isError"]=true;
+
+      String response;
+      serializeJson(responseObj, response);
+
+      server.send(200, "application/json", response);
+      return;
+    }
+    else if(relayState&&!isCharging){
+      responseObj["message"]="Failed to start smart charging";
+      responseObj["smartChargingStatus"]=3;
       responseObj["isError"]=true;
 
       String response;
@@ -153,9 +164,7 @@ void setup() {
         server.send(200, "application/json", response);
       return;
     }
-
-   
-
+    
     server.send(200);
   });
 
