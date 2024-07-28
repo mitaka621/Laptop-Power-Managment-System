@@ -77,6 +77,18 @@ void setup() {
     JsonDocument responseObj;
     responseObj["overrideActive"]=lastSwitchState;
 
+    if(relayState&&!isCharging){
+      responseObj["message"]="Failed to start smart charging";
+      responseObj["smartChargingStatus"]=3;
+      responseObj["isError"]=true;
+
+      String response;
+      serializeJson(responseObj, response);
+
+      server.send(200, "application/json", response);
+      return;
+    }
+
     if (lastSwitchState) {
       String response;
       serializeJson(responseObj, response);
@@ -96,17 +108,7 @@ void setup() {
       server.send(200, "application/json", response);
       return;
     }
-    else if(relayState&&!isCharging){
-      responseObj["message"]="Failed to start smart charging";
-      responseObj["smartChargingStatus"]=3;
-      responseObj["isError"]=true;
-
-      String response;
-      serializeJson(responseObj, response);
-
-      server.send(200, "application/json", response);
-      return;
-    }
+ 
 
     String response;
     switch (currentMode) {
@@ -214,7 +216,7 @@ void loop() {
     }
   }
 
-  if (millis()-currentMillis>=300000 && !relayState && !lastSwitchState) {
+  if (millis()-currentMillis>=300000 && relayState && !lastSwitchState) {
     Serial.println("Charging disabled since contact to the client was lost.");
     relayState=LOW;
   }
