@@ -55,6 +55,10 @@ namespace ChargingControllerApp
 			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
 			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
 			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
 			notifyIcon = new NotifyIcon(components);
 			contextMenuStrip1 = new ContextMenuStrip(components);
 			toolStripMenuItem1 = new ToolStripMenuItem();
@@ -88,9 +92,11 @@ namespace ChargingControllerApp
 			guna2PictureBox2 = new Guna2PictureBox();
 			ChargingImg = new PictureBox();
 			guna2HtmlToolTip1 = new Guna2HtmlToolTip();
+			DischargingImg = new Guna2PictureBox();
 			ServerDisconnectedImg = new Guna2PictureBox();
 			guna2HtmlToolTip2 = new Guna2HtmlToolTip();
 			NotChargingImg = new Guna2PictureBox();
+			ErrorChargingImg = new Guna2PictureBox();
 			guna2HtmlToolTip3 = new Guna2HtmlToolTip();
 			mainTimer = new System.Windows.Forms.Timer(components);
 			statusMessageTB = new Guna2TextBox();
@@ -105,8 +111,10 @@ namespace ChargingControllerApp
 			((System.ComponentModel.ISupportInitialize)ServerConnectedImg).BeginInit();
 			((System.ComponentModel.ISupportInitialize)guna2PictureBox2).BeginInit();
 			((System.ComponentModel.ISupportInitialize)ChargingImg).BeginInit();
+			((System.ComponentModel.ISupportInitialize)DischargingImg).BeginInit();
 			((System.ComponentModel.ISupportInitialize)ServerDisconnectedImg).BeginInit();
 			((System.ComponentModel.ISupportInitialize)NotChargingImg).BeginInit();
+			((System.ComponentModel.ISupportInitialize)ErrorChargingImg).BeginInit();
 			SuspendLayout();
 			// 
 			// notifyIcon
@@ -582,16 +590,32 @@ namespace ChargingControllerApp
 			guna2HtmlToolTip1.MaximumSize = new Size(0, 0);
 			guna2HtmlToolTip1.ReshowDelay = 100;
 			// 
+			// DischargingImg
+			// 
+			DischargingImg.BackgroundImage = (Image)resources.GetObject("DischargingImg.BackgroundImage");
+			DischargingImg.BackgroundImageLayout = ImageLayout.Zoom;
+			DischargingImg.CustomizableEdges = customizableEdges18;
+			DischargingImg.FillColor = Color.Transparent;
+			DischargingImg.ImageRotate = 0F;
+			DischargingImg.Location = new Point(250, 109);
+			DischargingImg.Name = "DischargingImg";
+			DischargingImg.ShadowDecoration.CustomizableEdges = customizableEdges19;
+			DischargingImg.Size = new Size(25, 26);
+			DischargingImg.TabIndex = 24;
+			DischargingImg.TabStop = false;
+			guna2HtmlToolTip1.SetToolTip(DischargingImg, "Waiting for the battery to discharge");
+			DischargingImg.Visible = false;
+			// 
 			// ServerDisconnectedImg
 			// 
 			ServerDisconnectedImg.BackgroundImage = Properties.Resources.circle_xmark_regular;
 			ServerDisconnectedImg.BackgroundImageLayout = ImageLayout.Zoom;
-			ServerDisconnectedImg.CustomizableEdges = customizableEdges18;
+			ServerDisconnectedImg.CustomizableEdges = customizableEdges20;
 			ServerDisconnectedImg.FillColor = Color.Transparent;
 			ServerDisconnectedImg.ImageRotate = 0F;
 			ServerDisconnectedImg.Location = new Point(153, 106);
 			ServerDisconnectedImg.Name = "ServerDisconnectedImg";
-			ServerDisconnectedImg.ShadowDecoration.CustomizableEdges = customizableEdges19;
+			ServerDisconnectedImg.ShadowDecoration.CustomizableEdges = customizableEdges21;
 			ServerDisconnectedImg.Size = new Size(25, 34);
 			ServerDisconnectedImg.TabIndex = 21;
 			ServerDisconnectedImg.TabStop = false;
@@ -608,16 +632,32 @@ namespace ChargingControllerApp
 			// 
 			NotChargingImg.BackgroundImage = Properties.Resources.circle_xmark_regular1;
 			NotChargingImg.BackgroundImageLayout = ImageLayout.Zoom;
-			NotChargingImg.CustomizableEdges = customizableEdges20;
+			NotChargingImg.CustomizableEdges = customizableEdges22;
 			NotChargingImg.FillColor = Color.Transparent;
 			NotChargingImg.ImageRotate = 0F;
 			NotChargingImg.Location = new Point(250, 110);
 			NotChargingImg.Name = "NotChargingImg";
-			NotChargingImg.ShadowDecoration.CustomizableEdges = customizableEdges21;
+			NotChargingImg.ShadowDecoration.CustomizableEdges = customizableEdges23;
 			NotChargingImg.Size = new Size(25, 26);
 			NotChargingImg.TabIndex = 22;
 			NotChargingImg.TabStop = false;
 			guna2HtmlToolTip2.SetToolTip(NotChargingImg, "Not currently charging via the LPM system");
+			// 
+			// ErrorChargingImg
+			// 
+			ErrorChargingImg.BackgroundImage = (Image)resources.GetObject("ErrorChargingImg.BackgroundImage");
+			ErrorChargingImg.BackgroundImageLayout = ImageLayout.Zoom;
+			ErrorChargingImg.CustomizableEdges = customizableEdges24;
+			ErrorChargingImg.FillColor = Color.Transparent;
+			ErrorChargingImg.ImageRotate = 0F;
+			ErrorChargingImg.Location = new Point(250, 109);
+			ErrorChargingImg.Name = "ErrorChargingImg";
+			ErrorChargingImg.ShadowDecoration.CustomizableEdges = customizableEdges25;
+			ErrorChargingImg.Size = new Size(25, 26);
+			ErrorChargingImg.TabIndex = 25;
+			ErrorChargingImg.TabStop = false;
+			guna2HtmlToolTip2.SetToolTip(ErrorChargingImg, "Charging command sent but laptop failed to begin charging");
+			ErrorChargingImg.Visible = false;
 			// 
 			// guna2HtmlToolTip3
 			// 
@@ -637,7 +677,7 @@ namespace ChargingControllerApp
 			// statusMessageTB
 			// 
 			statusMessageTB.BorderRadius = 4;
-			statusMessageTB.CustomizableEdges = customizableEdges22;
+			statusMessageTB.CustomizableEdges = customizableEdges26;
 			statusMessageTB.DefaultText = "Not Connected";
 			statusMessageTB.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
 			statusMessageTB.DisabledState.FillColor = Color.FromArgb(255, 132, 135);
@@ -656,7 +696,7 @@ namespace ChargingControllerApp
 			statusMessageTB.PlaceholderText = "";
 			statusMessageTB.ReadOnly = true;
 			statusMessageTB.SelectedText = "";
-			statusMessageTB.ShadowDecoration.CustomizableEdges = customizableEdges23;
+			statusMessageTB.ShadowDecoration.CustomizableEdges = customizableEdges27;
 			statusMessageTB.Size = new Size(354, 32);
 			statusMessageTB.TabIndex = 23;
 			statusMessageTB.TextAlign = HorizontalAlignment.Center;
@@ -683,6 +723,8 @@ namespace ChargingControllerApp
 			Controls.Add(label2);
 			Controls.Add(label1);
 			Controls.Add(pictureBox1);
+			Controls.Add(DischargingImg);
+			Controls.Add(ErrorChargingImg);
 			FormBorderStyle = FormBorderStyle.None;
 			Margin = new Padding(2);
 			Name = "MainForm";
@@ -698,8 +740,10 @@ namespace ChargingControllerApp
 			((System.ComponentModel.ISupportInitialize)ServerConnectedImg).EndInit();
 			((System.ComponentModel.ISupportInitialize)guna2PictureBox2).EndInit();
 			((System.ComponentModel.ISupportInitialize)ChargingImg).EndInit();
+			((System.ComponentModel.ISupportInitialize)DischargingImg).EndInit();
 			((System.ComponentModel.ISupportInitialize)ServerDisconnectedImg).EndInit();
 			((System.ComponentModel.ISupportInitialize)NotChargingImg).EndInit();
+			((System.ComponentModel.ISupportInitialize)ErrorChargingImg).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -746,5 +790,7 @@ namespace ChargingControllerApp
 		private Guna2TextBox serverTokentTB;
 		private Guna2TextBox statusMessageTB;
 		private System.Windows.Forms.Timer textOverflowTimer;
+		private Guna2PictureBox DischargingImg;
+		private Guna2PictureBox ErrorChargingImg;
 	}
 }

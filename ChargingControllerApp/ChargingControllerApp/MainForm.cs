@@ -63,7 +63,7 @@ namespace ChargingControllerApp
 				}
 				catch (Exception ex)
 				{
-					DisplayServerConnectionLost(ex.Message);
+					DisplayServerConnectionStateLost(ex.Message);
 					return;
 				}
 
@@ -123,7 +123,7 @@ namespace ChargingControllerApp
 			Visible = true;
 		}
 
-		private void DisplayServerConnection(bool isConnected)
+		private void DisplayServerConnectionState(bool isConnected)
 		{
 			if (isConnected)
 			{
@@ -137,7 +137,7 @@ namespace ChargingControllerApp
 			}
 		}
 
-		private void DisplayServerConnectionLoading(bool show)
+		private void DisplayServerConnectionStateLoading(bool show)
 		{
 			serverConnectionLoading.Visible = show;
 		}
@@ -197,7 +197,7 @@ namespace ChargingControllerApp
 			mainTimer.Stop();
 			if (_statusSenderService == null)
 			{
-				DisplayServerConnectionLost("Failed to send request to server");
+				DisplayServerConnectionStateLost("Failed to send request to server");
 				return;
 			}
 
@@ -211,21 +211,8 @@ namespace ChargingControllerApp
 					return;
 				}
 
-				switch (response.SmartChargingStatus)
-				{
-					case SmartChargingStates.Activated:
-						NotChargingImg.Visible = false;
-						ChargingImg.Visible = true;
-						break;
-					case SmartChargingStates.Deactivated:
-						NotChargingImg.Visible = true;
-						ChargingImg.Visible = false;
-						break;
-					case SmartChargingStates.WaitingToDischarge:
-						break;
-				}
-
-				DisplayServerConnection(true);
+				DisplayChargingState(response.SmartChargingStatus);
+				DisplayServerConnectionState(true);
 
 				if (response.OverrideActive)
 				{
@@ -252,7 +239,7 @@ namespace ChargingControllerApp
 			}
 			catch (Exception ex)
 			{
-				DisplayServerConnectionLost("The request was not successful - " + ex.Message);
+				DisplayServerConnectionStateLost("The request was not successful - " + ex.Message);
 			}
 
 			mainTimer.Start();
@@ -289,9 +276,9 @@ namespace ChargingControllerApp
 			batteryMinSlider.Enabled = true;
 		}
 
-		private void DisplayServerConnectionLost(string message)
+		private void DisplayServerConnectionStateLost(string message)
 		{
-			DisplayServerConnection(false);
+			DisplayServerConnectionState(false);
 			ShowApp();
 			guna2TabControl1.SelectTab(1);
 			EnableServerConnectionInput();
@@ -339,7 +326,7 @@ namespace ChargingControllerApp
 
 		private async void ConnectToServerBn_Click(object sender, EventArgs e)
 		{
-			DisplayServerConnectionLoading(true);
+			DisplayServerConnectionStateLoading(true);
 			_dataManagerService.SaveEncryptedToken(serverTokentTB.Text);
 			_dataManagerService.SaveServerIp(serverIpInput.Text);
 
@@ -348,8 +335,8 @@ namespace ChargingControllerApp
 
 			var result = await _statusSenderService.CheckStatus();
 
-			DisplayServerConnectionLoading(false);
-			DisplayServerConnection(result);
+			DisplayServerConnectionStateLoading(false);
+			DisplayServerConnectionState(result);
 
 			if (result)
 			{
@@ -398,6 +385,30 @@ namespace ChargingControllerApp
 					batteryMinSlider.Enabled = false;
 					batteryMaxSlider.Enabled = false;
 					guna2HtmlToolTip3.SetToolTip(ModeInfoToolTip, "Note: The smart charging is stopped");
+					break;
+			}
+		}
+
+		private void DisplayChargingState(SmartChargingStates status)
+		{
+			NotChargingImg.Visible = false;
+			DischargingImg.Visible = false;
+			ErrorChargingImg.Visible = false;
+			ChargingImg.Visible = false;
+
+			switch (status)
+			{
+				case SmartChargingStates.Activated:
+					ChargingImg.Visible = true;
+					break;
+				case SmartChargingStates.Deactivated:
+					NotChargingImg.Visible = true;
+					break;
+				case SmartChargingStates.FailedToStartCharging:
+					ErrorChargingImg.Visible = true;
+					break;
+				case SmartChargingStates.WaitingToDischarge:
+					DischargingImg.Visible = true;
 					break;
 			}
 		}
