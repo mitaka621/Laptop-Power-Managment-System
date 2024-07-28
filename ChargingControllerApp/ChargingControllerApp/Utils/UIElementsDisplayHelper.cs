@@ -166,25 +166,24 @@ namespace ChargingControllerApp.Utils
 			StatusMessageTB.DisabledState.FillColor = Color.FromArgb(218, 254, 225);
 		}
 
-		public void SelectMode(int mode)
+		public void SelectMode(ChargingModes mode)
 		{
-
-			switch (ModeSelectorCB.SelectedIndex)
+			ModeSelectorCB.SelectedIndex = (int)mode;
+			switch (mode)
 			{
-				//best battery life
-				case 0:
+				case ChargingModes.BestBatteryLifeCharging:
 					EnableBatteryInputs();
 					Guna2HtmlToolTip3.SetToolTip(ModeInfoToolTip, "Note: In this mode the battery will continuously be charged to the specified % and when this level is reached the charging will be stopped until the battery % drops to the specified minimum level. (this is repeated)");
 					break;
-				//charge to a given %
-				case 1:
+
+				case ChargingModes.FixedLevelCharging:
 					ModeSelectorCB.Enabled = true;
 					BatteryMaxSlider.Enabled = true;
 					BatteryMinSlider.Enabled = false;
 					Guna2HtmlToolTip3.SetToolTip(ModeInfoToolTip, "Note: The battery will be charged to a constant level.");
 					break;
-				//stop charging
-				case 2:
+
+				case ChargingModes.Off:
 					ModeSelectorCB.Enabled = true;
 					BatteryMinSlider.Enabled = false;
 					BatteryMaxSlider.Enabled = false;

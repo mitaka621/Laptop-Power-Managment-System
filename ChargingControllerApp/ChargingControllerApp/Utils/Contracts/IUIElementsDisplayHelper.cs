@@ -42,7 +42,7 @@ namespace ChargingControllerApp.Utils.Contracts
 		void DisplayServerConnectionStateLost(string message);
 		void DisplayErrorStatus(string message);
 		void DisplayOkStatus(string message);
-		void SelectMode(int mode);
+		void SelectMode(ChargingModes mode);
 		void DisplayChargingState(SmartChargingStates status);
 	}
 

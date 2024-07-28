@@ -1,8 +1,12 @@
 using ChargingControllerApp.Enums;
+using ChargingControllerApp.Models;
 using ChargingControllerApp.Services;
 using ChargingControllerApp.Services.Contracts;
 using ChargingControllerApp.Utils;
 using ChargingControllerApp.Utils.Contracts;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using System.Text.Json;
 
 namespace ChargingControllerApp
 {
@@ -61,14 +65,7 @@ namespace ChargingControllerApp
 
 			textOverflowTimer.Start();
 
-			if (File.Exists("misc.txt"))
-			{
-				int savedMode = int.Parse(File.ReadAllText("misc.txt"));
-
-				_uiHelper.SelectMode(savedMode);
-
-				modeSelectorCB.SelectedIndex = savedMode;
-			}
+			LoadUserConfig();
 
 			if (File.Exists("serverInfo.txt") && File.Exists("token.txt"))
 			{
@@ -124,7 +121,7 @@ namespace ChargingControllerApp
 				}
 				else
 				{
-					_uiHelper.SelectMode(modeSelectorCB.SelectedIndex);
+					_uiHelper.SelectMode((ChargingModes)modeSelectorCB.SelectedIndex);
 				}
 
 				if (response.IsError)
@@ -205,6 +202,8 @@ namespace ChargingControllerApp
 			MaxBatteryLabel.Text = value.ToString() + "%";
 
 			maxPercentage = value;
+
+			SaveUserConfig();
 		}
 
 		private void batteryMinSlider_Scroll(object sender, ScrollEventArgs e)
@@ -230,6 +229,8 @@ namespace ChargingControllerApp
 			MinBatteryLabel.Text = value.ToString() + "%";
 
 			minPercentage = value;
+
+			SaveUserConfig();
 		}
 
 		private void guna2TextBox3_TextChanged(object sender, EventArgs e)
@@ -288,10 +289,54 @@ namespace ChargingControllerApp
 
 		private void modeSelectorCB_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			File.WriteAllText("misc.txt", modeSelectorCB.SelectedIndex.ToString());
 			currentChargingMode = (ChargingModes)modeSelectorCB.SelectedIndex;
 
-			_uiHelper.SelectMode(modeSelectorCB.SelectedIndex);
+			_uiHelper.SelectMode(currentChargingMode);
+
+			SaveUserConfig();
+		}
+
+		private void SaveUserConfig()
+		{
+			var userConfig = new UserConfigModel()
+			{
+				ChargingMode = (ChargingModes)modeSelectorCB.SelectedIndex,
+				MinSliderValue = minPercentage,
+				MaxSliderValue = maxPercentage,
+			};
+
+			string jsonString = JsonSerializer.Serialize(userConfig);
+
+			BsonDocument document = BsonDocument.Parse(jsonString);
+
+			File.WriteAllBytes("userconfig.dat", document.ToBson());
+		}
+
+		private void LoadUserConfig()
+		{
+			if (!File.Exists("userconfig.dat"))
+			{
+				return;
+			}
+
+			byte[] bsonData = File.ReadAllBytes("userconfig.dat");
+
+			UserConfigModel? model = BsonSerializer.Deserialize<UserConfigModel>(bsonData);
+
+			if (model is null)
+			{
+				return;
+			}
+
+			minPercentage = model.MinSliderValue;
+			batteryMinSlider.Value = model.MinSliderValue;
+			MinBatteryLabel.Text = model.MinSliderValue.ToString() + "%";
+
+			maxPercentage = model.MaxSliderValue;
+			batteryMaxSlider.Value = model.MaxSliderValue;
+			MaxBatteryLabel.Text = model.MaxSliderValue.ToString() + "%";
+
+			_uiHelper.SelectMode(model.ChargingMode);
 		}
 	}
 }
