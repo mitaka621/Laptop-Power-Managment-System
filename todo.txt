@@ -1,5 +1,0 @@
-ceramic capacitors 0.1uf - done
-
-electrolytic capacitors 100uf - done
-
-7805 voltage regulator converts to 5v
