@@ -11,7 +11,7 @@ bool lastSwitchState = LOW;
 const char *ssid = "ditoge03";
 const char *password = "mitko111";
 
-const char *authToken="grkCPpFFWCiLZOhIoXhFVbUP2u1Em7LoOZrb5scL1jCvtJ28LeHKarOLFtcBDGiKufDY8q3Bgu4TJOAG2l";
+const char *authToken="";
 
 IPAddress staticIP(192, 168, 0, 3);  // Set the desired static IP address
 IPAddress gateway(192, 168, 0, 1);
@@ -216,7 +216,7 @@ void loop() {
     }
   }
 
-  if (millis()-currentMillis>=300000 && relayState && !lastSwitchState) {
+  if (millis()-currentMillis>=30000 && relayState && !lastSwitchState) {
     Serial.println("Charging disabled since contact to the client was lost.");
     relayState=LOW;
   }
