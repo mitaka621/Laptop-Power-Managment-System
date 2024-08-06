@@ -33,9 +33,7 @@ void setup() {
   WiFi.begin(ssid, password);
   WiFi.config(staticIP, gateway, subnet, dns);
 
-  server.on("/", HTTP_GET, [&]() {
-    currentMillis=millis();
-
+  server.on("/", HTTP_GET, []() {
     if (strcmp(server.header("token").c_str(), authToken)!=0) {
     Serial.println("Invalid token");
     Serial.println(server.header("token"));
@@ -46,6 +44,8 @@ void setup() {
   });
 
   server.on("/data", HTTP_POST, [&]() {
+    currentMillis=millis();
+
     if (strcmp(server.header("token").c_str(), authToken)!=0) {
     Serial.println("Invalid token");
     Serial.println(server.header("token"));
