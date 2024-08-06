@@ -11,7 +11,7 @@ bool lastSwitchState = LOW;
 const char *ssid = "ditoge03";
 const char *password = "mitko111";
 
-const char *authToken="";
+const char *authToken="grkCPpFFWCiLZOhIoXhFVbUP2u1Em7LoOZrb5scL1jCvtJ28LeHKarOLFtcBDGiKufDY8q3Bgu4TJOAG2l";
 
 IPAddress staticIP(192, 168, 0, 3);  // Set the desired static IP address
 IPAddress gateway(192, 168, 0, 1);
@@ -77,7 +77,7 @@ void setup() {
     JsonDocument responseObj;
     responseObj["overrideActive"]=lastSwitchState;
 
-    if(relayState&&!isCharging){
+    if(relayState&&!isCharging&&currentMode!=2){
       responseObj["message"]="Failed to start smart charging";
       responseObj["smartChargingStatus"]=3;
       responseObj["isError"]=true;
