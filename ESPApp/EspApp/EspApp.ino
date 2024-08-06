@@ -2,16 +2,20 @@
 #include <WebServer.h>
 #include <ArduinoJson.h>
 
-#define switchPin 4
+#define switchPin 4  //togle override button
+//#define switchPin 15
+
 #define relayPin  6
+//#define switchPin 26
 
 bool relayState = LOW;   
 bool lastSwitchState = LOW; 
 
-const char *ssid = "ditoge03";
-const char *password = "mitko111";
-
+//optional - you can leave it empty
 const char *authToken="";
+
+const char *ssid = "";
+const char *password = "";
 
 IPAddress staticIP(192, 168, 0, 3);  // Set the desired static IP address
 IPAddress gateway(192, 168, 0, 1);
