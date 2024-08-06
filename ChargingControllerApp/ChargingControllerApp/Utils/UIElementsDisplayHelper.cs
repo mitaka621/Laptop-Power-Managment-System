@@ -115,9 +115,10 @@ namespace ChargingControllerApp.Utils
 		{
 			ServerIpInput.Enabled = false;
 			ServerTokentTB.Enabled = false;
-			ConnectToServerBn.Enabled = false;
+
 
 			ConnectToServerBn.Text = "Already Connected";
+			ConnectToServerBn.Enabled = false;
 		}
 
 		public void EnableServerConnectionInput()
@@ -126,6 +127,7 @@ namespace ChargingControllerApp.Utils
 			ServerTokentTB.Enabled = true;
 
 			ConnectToServerBn.Text = "Connect";
+			ConnectToServerBn.Enabled = true;
 		}
 
 		public void DisableBatteryInputs()
