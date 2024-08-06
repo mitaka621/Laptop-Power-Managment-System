@@ -103,7 +103,8 @@ namespace ChargingControllerApp.Utils
 			{
 				ServerConnectedImg.Visible = false;
 				ServerDisconnectedImg.Visible = true;
-			}
+				DisableServerConnectionInput();
+            }
 		}
 
 		public void DisplayServerConnectionStateLoading(bool show)

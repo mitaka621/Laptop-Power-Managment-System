@@ -197,6 +197,13 @@ void setup() {
 
 void loop() {
   server.handleClient();
+  
+  if (WiFi.status() != WL_CONNECTED) {
+    WiFi.disconnect();
+    WiFi.begin(ssid, password);
+    WiFi.config(staticIP, gateway, subnet, dns);
+  }
+  
   bool currentSwitchState = digitalRead(switchPin);
 
   if (currentSwitchState != lastSwitchState) {
@@ -226,4 +233,8 @@ void loop() {
   }
 
   digitalWrite(relayPin, relayState);
+  
+  
+  if(relayState)
+    delay(500); //we are waiting in order for the laptop to detect that the charging has started
 }
