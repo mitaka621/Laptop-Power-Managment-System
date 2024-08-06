@@ -17,7 +17,7 @@ namespace ChargingControllerApp.Services
 
 			return new LaptopDataModel()
 			{
-				BatteryPercentage = (int)powerStatus.BatteryLifePercent * 100,
+				BatteryPercentage = (int)(powerStatus.BatteryLifePercent * 100),
 				IsCharging = powerStatus.PowerLineStatus == PowerLineStatus.Online,
 				CurrentDateTime= DateTime.Now,
 			};

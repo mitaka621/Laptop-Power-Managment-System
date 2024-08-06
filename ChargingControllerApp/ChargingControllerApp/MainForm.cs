@@ -6,6 +6,7 @@ using ChargingControllerApp.Utils;
 using ChargingControllerApp.Utils.Contracts;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
+using Newtonsoft.Json.Linq;
 using System.Text.Json;
 
 namespace ChargingControllerApp
@@ -203,7 +204,13 @@ namespace ChargingControllerApp
 
 			maxPercentage = value;
 
-			SaveUserConfig();
+            if (value<= batteryMinSlider.Value)
+            {
+                batteryMinSlider.Value= value-10;
+                MinBatteryLabel.Text = batteryMinSlider.Value.ToString() + "%";
+            }
+
+            SaveUserConfig();
 		}
 
 		private void batteryMinSlider_Scroll(object sender, ScrollEventArgs e)
@@ -230,7 +237,13 @@ namespace ChargingControllerApp
 
 			minPercentage = value;
 
-			SaveUserConfig();
+            if (value>=batteryMaxSlider.Value)
+            {
+				batteryMaxSlider.Value = value + 10;
+                MaxBatteryLabel.Text = batteryMaxSlider.Value.ToString() + "%";
+            }
+
+            SaveUserConfig();
 		}
 
 		private void guna2TextBox3_TextChanged(object sender, EventArgs e)
