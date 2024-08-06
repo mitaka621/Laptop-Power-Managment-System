@@ -208,6 +208,7 @@ namespace ChargingControllerApp
             {
                 batteryMinSlider.Value= value-10;
                 MinBatteryLabel.Text = batteryMinSlider.Value.ToString() + "%";
+				minPercentage= value-10;
             }
 
             SaveUserConfig();
@@ -241,6 +242,7 @@ namespace ChargingControllerApp
             {
 				batteryMaxSlider.Value = value + 10;
                 MaxBatteryLabel.Text = batteryMaxSlider.Value.ToString() + "%";
+				maxPercentage = value + 10;
             }
 
             SaveUserConfig();
