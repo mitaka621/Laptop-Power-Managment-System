@@ -132,6 +132,9 @@ void setup() {
           responseObj["message"]="Waiting to discharge to "+String(minBatteryPercentage)+"%";
         }else{
           relayState=HIGH;
+          digitalWrite(relayPin, relayState);
+
+          delay(1000); //small delay in order for the laptop to register that the charging has started
 
           responseObj["smartChargingStatus"]=0;
           responseObj["message"]="Charging to "+String(maxBatteryPercentage)+"%";
@@ -145,6 +148,10 @@ void setup() {
         responseObj["isError"]=false;
         if (batteryPercentage<=maxBatteryPercentage) {
           relayState=HIGH;
+          digitalWrite(relayPin, relayState);
+
+          delay(1000); //small delay in order for the laptop to register that the charging has started
+          
           responseObj["smartChargingStatus"]=0;
           responseObj["message"]="Charging to "+String(maxBatteryPercentage)+"%";
         } else{
@@ -233,8 +240,4 @@ void loop() {
   }
 
   digitalWrite(relayPin, relayState);
-  
-  
-  if(relayState)
-    delay(500); //we are waiting in order for the laptop to detect that the charging has started
 }
