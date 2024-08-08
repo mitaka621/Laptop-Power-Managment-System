@@ -1,13 +1,15 @@
 ﻿using ChargingControllerApp.Enums;
 using ChargingControllerApp.Utils.Contracts;
 using Guna.UI2.WinForms;
+using System.Media;
 
 namespace ChargingControllerApp.Utils
 {
 	public class UIElementsDisplayHelper : IUIElementsDisplayHelper
 	{
-		public Form MainForm { get; private set; }
+		private SmartChargingStates lastChargingState= SmartChargingStates.Deactivated;
 
+        public Form MainForm { get; private set; }
 		public PictureBox ServerConnectedImg { get; private set; }
 		public PictureBox ServerDisconnectedImg { get; }
 		public Guna2CircleProgressBar ServerConnectionLoading { get; private set; }
@@ -197,7 +199,12 @@ namespace ChargingControllerApp.Utils
 
 		public void DisplayChargingState(SmartChargingStates status)
 		{
-			NotChargingImg.Visible = false;
+            if (status==lastChargingState)
+            {
+				return;
+            }
+
+            NotChargingImg.Visible = false;
 			DischargingImg.Visible = false;
 			ErrorChargingImg.Visible = false;
 			ChargingImg.Visible = false;
@@ -206,17 +213,25 @@ namespace ChargingControllerApp.Utils
 			{
 				case SmartChargingStates.Activated:
 					ChargingImg.Visible = true;
-					break;
+                    SoundPlayer soundConnected = new SoundPlayer(Path.GetFullPath(@"Resourses\message-incoming-2-199577.wav"));
+                    soundConnected.Play();
+
+                    break;
 				case SmartChargingStates.Deactivated:
 					NotChargingImg.Visible = true;
 					break;
 				case SmartChargingStates.FailedToStartCharging:
 					ErrorChargingImg.Visible = true;
+					SoundPlayer soundDisconnect= new SoundPlayer(Path.GetFullPath(@"Resourses\bottle-205353.wav"));
+					soundDisconnect.Play();
+					
 					break;
 				case SmartChargingStates.WaitingToDischarge:
 					DischargingImg.Visible = true;
 					break;
 			}
-		}
+
+            lastChargingState= status;
+        }
 	}
 }
