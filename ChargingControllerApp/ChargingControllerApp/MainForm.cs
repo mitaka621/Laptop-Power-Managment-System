@@ -42,7 +42,6 @@ namespace ChargingControllerApp
 				batteryMaxSlider,
 				batteryMinSlider,
 				guna2TabControl1,
-				statusMessageTB,
 				guna2HtmlToolTip3,
 				modeInfoToolTip,
 				mainTimer,

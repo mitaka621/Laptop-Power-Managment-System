@@ -20,7 +20,6 @@ namespace ChargingControllerApp.Utils.Contracts
 		Guna2TrackBar BatteryMinSlider { get; }
 
 		Guna2TabControl Guna2TabControl1 { get; }
-		Guna2TextBox StatusMessageTB { get; }
 		Guna2HtmlToolTip Guna2HtmlToolTip3 { get; }
 		Control ModeInfoToolTip { get; }
 		Guna2HtmlLabel MessageLabel { get; }

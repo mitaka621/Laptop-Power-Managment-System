@@ -27,7 +27,6 @@ namespace ChargingControllerApp.Utils
 		public Guna2TrackBar BatteryMinSlider { get; private set; }
 
 		public Guna2TabControl Guna2TabControl1 { get; private set; }
-		public Guna2TextBox StatusMessageTB { get; private set; }
 		public Guna2HtmlToolTip Guna2HtmlToolTip3 { get; private set; }
 		public Control ModeInfoToolTip { get; private set; }
 		public Guna2HtmlLabel MessageLabel { get; private set; }
@@ -51,7 +50,6 @@ namespace ChargingControllerApp.Utils
 			Guna2TrackBar batteryMaxSlider,
 			Guna2TrackBar batteryMinSlider,
 			Guna2TabControl guna2TabControl1,
-			Guna2TextBox statusMessageTB,
 			Guna2HtmlToolTip guna2HtmlToolTip3,
 			Control modeInfoToolTip,
 			System.Windows.Forms.Timer mainTimer,
@@ -77,7 +75,6 @@ namespace ChargingControllerApp.Utils
 			BatteryMaxSlider = batteryMaxSlider;
 			BatteryMinSlider = batteryMinSlider;
 			Guna2TabControl1 = guna2TabControl1;
-			StatusMessageTB = statusMessageTB;
 			Guna2HtmlToolTip3 = guna2HtmlToolTip3;
 			ModeInfoToolTip = modeInfoToolTip;
 			MainTimer = mainTimer;
@@ -170,14 +167,12 @@ namespace ChargingControllerApp.Utils
 		public void DisplayErrorStatus(string message)
 		{
 			WriteMessage(message);
-			StatusMessageTB.DisabledState.FillColor = Color.FromArgb(255, 189, 191);
 			MessageLabel.BackColor = Color.FromArgb(255, 189, 191);
 		}
 
 		public void DisplayOkStatus(string message)
 		{
 			WriteMessage(message);
-			StatusMessageTB.DisabledState.FillColor = Color.FromArgb(218, 254, 225);
 			MessageLabel.BackColor = Color.FromArgb(255, 189, 191);
 		}
 
