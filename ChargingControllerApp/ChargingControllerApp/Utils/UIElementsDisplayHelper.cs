@@ -31,6 +31,7 @@ namespace ChargingControllerApp.Utils
 		public Guna2HtmlToolTip Guna2HtmlToolTip3 { get; private set; }
 		public Control ModeInfoToolTip { get; private set; }
 		public Guna2HtmlLabel MessageLabel { get; private set; }
+
 		public System.Windows.Forms.Timer MainTimer { get; private set; }
 
 		public Guna2PictureBox NotChargingImg { get; private set; }
@@ -223,18 +224,32 @@ namespace ChargingControllerApp.Utils
 				case SmartChargingStates.Activated:
 					ChargingImg.Visible = true;
 
-					soundConnected.Play();
-
+					try
+					{
+						soundConnected.Play();
+					}
+					catch (FileNotFoundException)
+					{
+						DisplayErrorStatus("Sound file for begin charging not found");
+					}
 					break;
+
 				case SmartChargingStates.Deactivated:
 					NotChargingImg.Visible = true;
 					break;
+
 				case SmartChargingStates.FailedToStartCharging:
 					ErrorChargingImg.Visible = true;
-
-					soundDisconnect.Play();
-
+					try
+					{
+						soundDisconnect.Play();
+					}
+					catch (FileNotFoundException)
+					{
+						DisplayErrorStatus("Sound file for charging failed to start not found");
+					}
 					break;
+
 				case SmartChargingStates.WaitingToDischarge:
 					DischargingImg.Visible = true;
 					break;

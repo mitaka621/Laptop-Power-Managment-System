@@ -68,13 +68,13 @@ namespace ChargingControllerApp
 			label2 = new Label();
 			guna2TabControl1 = new Guna2TabControl();
 			tabPage2 = new TabPage();
-			MinBatteryLabel = new Guna2HtmlLabel();
+			minBatteryLabel = new Guna2HtmlLabel();
 			guna2HtmlLabel7 = new Guna2HtmlLabel();
 			batteryMinSlider = new Guna2TrackBar();
-			MaxBatteryLabel = new Guna2HtmlLabel();
+			maxBatteryLabel = new Guna2HtmlLabel();
 			guna2HtmlLabel1 = new Guna2HtmlLabel();
 			batteryMaxSlider = new Guna2TrackBar();
-			ModeInfoToolTip = new Guna2PictureBox();
+			modeInfoToolTip = new Guna2PictureBox();
 			modeSelectorCB = new Guna2ComboBox();
 			guna2HtmlLabel5 = new Guna2HtmlLabel();
 			tabPage1 = new TabPage();
@@ -86,17 +86,17 @@ namespace ChargingControllerApp
 			serverIpInput = new Guna2TextBox();
 			guna2HtmlLabel3 = new Guna2HtmlLabel();
 			guna2HtmlLabel2 = new Guna2HtmlLabel();
-			guna2Button2 = new Guna2Button();
+			closeButton = new Guna2Button();
 			guna2PictureBox1 = new Guna2PictureBox();
-			ServerConnectedImg = new PictureBox();
+			serverConnectedImg = new PictureBox();
 			guna2PictureBox2 = new Guna2PictureBox();
-			ChargingImg = new PictureBox();
+			chargingImg = new PictureBox();
 			guna2HtmlToolTip1 = new Guna2HtmlToolTip();
-			DischargingImg = new Guna2PictureBox();
-			ServerDisconnectedImg = new Guna2PictureBox();
+			dischargingImg = new Guna2PictureBox();
+			serverDisconnectedImg = new Guna2PictureBox();
 			guna2HtmlToolTip2 = new Guna2HtmlToolTip();
-			NotChargingImg = new Guna2PictureBox();
-			ErrorChargingImg = new Guna2PictureBox();
+			notChargingImg = new Guna2PictureBox();
+			errorChargingImg = new Guna2PictureBox();
 			guna2HtmlToolTip3 = new Guna2HtmlToolTip();
 			mainTimer = new System.Windows.Forms.Timer(components);
 			statusMessageTB = new Guna2TextBox();
@@ -106,16 +106,16 @@ namespace ChargingControllerApp
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			guna2TabControl1.SuspendLayout();
 			tabPage2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)ModeInfoToolTip).BeginInit();
+			((System.ComponentModel.ISupportInitialize)modeInfoToolTip).BeginInit();
 			tabPage1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
-			((System.ComponentModel.ISupportInitialize)ServerConnectedImg).BeginInit();
+			((System.ComponentModel.ISupportInitialize)serverConnectedImg).BeginInit();
 			((System.ComponentModel.ISupportInitialize)guna2PictureBox2).BeginInit();
-			((System.ComponentModel.ISupportInitialize)ChargingImg).BeginInit();
-			((System.ComponentModel.ISupportInitialize)DischargingImg).BeginInit();
-			((System.ComponentModel.ISupportInitialize)ServerDisconnectedImg).BeginInit();
-			((System.ComponentModel.ISupportInitialize)NotChargingImg).BeginInit();
-			((System.ComponentModel.ISupportInitialize)ErrorChargingImg).BeginInit();
+			((System.ComponentModel.ISupportInitialize)chargingImg).BeginInit();
+			((System.ComponentModel.ISupportInitialize)dischargingImg).BeginInit();
+			((System.ComponentModel.ISupportInitialize)serverDisconnectedImg).BeginInit();
+			((System.ComponentModel.ISupportInitialize)notChargingImg).BeginInit();
+			((System.ComponentModel.ISupportInitialize)errorChargingImg).BeginInit();
 			SuspendLayout();
 			// 
 			// notifyIcon
@@ -124,7 +124,7 @@ namespace ChargingControllerApp
 			notifyIcon.Icon = (Icon)resources.GetObject("notifyIcon.Icon");
 			notifyIcon.Text = "LPM System";
 			notifyIcon.Visible = true;
-			notifyIcon.MouseDoubleClick += notifyIcon_MouseDoubleClick;
+			notifyIcon.MouseDoubleClick += NotifyIcon_MouseDoubleClick;
 			// 
 			// contextMenuStrip1
 			// 
@@ -145,7 +145,7 @@ namespace ChargingControllerApp
 			exitToolStripMenuItem.Name = "exitToolStripMenuItem";
 			exitToolStripMenuItem.Size = new Size(93, 22);
 			exitToolStripMenuItem.Text = "Exit";
-			exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
+			exitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
 			// 
 			// pictureBox1
 			// 
@@ -219,13 +219,13 @@ namespace ChargingControllerApp
 			// tabPage2
 			// 
 			tabPage2.BackColor = Color.FromArgb(82, 86, 113);
-			tabPage2.Controls.Add(MinBatteryLabel);
+			tabPage2.Controls.Add(minBatteryLabel);
 			tabPage2.Controls.Add(guna2HtmlLabel7);
 			tabPage2.Controls.Add(batteryMinSlider);
-			tabPage2.Controls.Add(MaxBatteryLabel);
+			tabPage2.Controls.Add(maxBatteryLabel);
 			tabPage2.Controls.Add(guna2HtmlLabel1);
 			tabPage2.Controls.Add(batteryMaxSlider);
-			tabPage2.Controls.Add(ModeInfoToolTip);
+			tabPage2.Controls.Add(modeInfoToolTip);
 			tabPage2.Controls.Add(modeSelectorCB);
 			tabPage2.Controls.Add(guna2HtmlLabel5);
 			tabPage2.Location = new Point(4, 44);
@@ -235,16 +235,16 @@ namespace ChargingControllerApp
 			tabPage2.TabIndex = 1;
 			tabPage2.Text = "Power Managment";
 			// 
-			// MinBatteryLabel
+			// minBatteryLabel
 			// 
-			MinBatteryLabel.BackColor = Color.Transparent;
-			MinBatteryLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			MinBatteryLabel.ForeColor = Color.White;
-			MinBatteryLabel.Location = new Point(154, 247);
-			MinBatteryLabel.Name = "MinBatteryLabel";
-			MinBatteryLabel.Size = new Size(35, 23);
-			MinBatteryLabel.TabIndex = 28;
-			MinBatteryLabel.Text = "60%";
+			minBatteryLabel.BackColor = Color.Transparent;
+			minBatteryLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			minBatteryLabel.ForeColor = Color.White;
+			minBatteryLabel.Location = new Point(154, 247);
+			minBatteryLabel.Name = "minBatteryLabel";
+			minBatteryLabel.Size = new Size(35, 23);
+			minBatteryLabel.TabIndex = 28;
+			minBatteryLabel.Text = "60%";
 			// 
 			// guna2HtmlLabel7
 			// 
@@ -270,18 +270,18 @@ namespace ChargingControllerApp
 			batteryMinSlider.TabIndex = 26;
 			batteryMinSlider.ThumbColor = Color.FromArgb(37, 246, 32);
 			batteryMinSlider.Value = 60;
-			batteryMinSlider.Scroll += batteryMinSlider_Scroll;
+			batteryMinSlider.Scroll += BatteryMinSlider_Scroll;
 			// 
-			// MaxBatteryLabel
+			// maxBatteryLabel
 			// 
-			MaxBatteryLabel.BackColor = Color.Transparent;
-			MaxBatteryLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			MaxBatteryLabel.ForeColor = Color.White;
-			MaxBatteryLabel.Location = new Point(154, 155);
-			MaxBatteryLabel.Name = "MaxBatteryLabel";
-			MaxBatteryLabel.Size = new Size(35, 23);
-			MaxBatteryLabel.TabIndex = 25;
-			MaxBatteryLabel.Text = "80%";
+			maxBatteryLabel.BackColor = Color.Transparent;
+			maxBatteryLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			maxBatteryLabel.ForeColor = Color.White;
+			maxBatteryLabel.Location = new Point(154, 155);
+			maxBatteryLabel.Name = "maxBatteryLabel";
+			maxBatteryLabel.Size = new Size(35, 23);
+			maxBatteryLabel.TabIndex = 25;
+			maxBatteryLabel.Text = "80%";
 			// 
 			// guna2HtmlLabel1
 			// 
@@ -307,22 +307,22 @@ namespace ChargingControllerApp
 			batteryMaxSlider.TabIndex = 23;
 			batteryMaxSlider.ThumbColor = Color.FromArgb(37, 246, 32);
 			batteryMaxSlider.Value = 80;
-			batteryMaxSlider.Scroll += guna2TrackBar1_Scroll;
+			batteryMaxSlider.Scroll += BatteryMaxSlider_Scroll;
 			// 
-			// ModeInfoToolTip
+			// modeInfoToolTip
 			// 
-			ModeInfoToolTip.BackgroundImage = Properties.Resources.infoIcon;
-			ModeInfoToolTip.BackgroundImageLayout = ImageLayout.Zoom;
-			ModeInfoToolTip.CustomizableEdges = customizableEdges28;
-			ModeInfoToolTip.FillColor = Color.Transparent;
-			ModeInfoToolTip.ImageRotate = 0F;
-			ModeInfoToolTip.Location = new Point(300, 49);
-			ModeInfoToolTip.Name = "ModeInfoToolTip";
-			ModeInfoToolTip.ShadowDecoration.CustomizableEdges = customizableEdges29;
-			ModeInfoToolTip.Size = new Size(25, 28);
-			ModeInfoToolTip.TabIndex = 22;
-			ModeInfoToolTip.TabStop = false;
-			guna2HtmlToolTip3.SetToolTip(ModeInfoToolTip, resources.GetString("ModeInfoToolTip.ToolTip"));
+			modeInfoToolTip.BackgroundImage = Properties.Resources.infoIcon;
+			modeInfoToolTip.BackgroundImageLayout = ImageLayout.Zoom;
+			modeInfoToolTip.CustomizableEdges = customizableEdges28;
+			modeInfoToolTip.FillColor = Color.Transparent;
+			modeInfoToolTip.ImageRotate = 0F;
+			modeInfoToolTip.Location = new Point(300, 49);
+			modeInfoToolTip.Name = "modeInfoToolTip";
+			modeInfoToolTip.ShadowDecoration.CustomizableEdges = customizableEdges29;
+			modeInfoToolTip.Size = new Size(25, 28);
+			modeInfoToolTip.TabIndex = 22;
+			modeInfoToolTip.TabStop = false;
+			guna2HtmlToolTip3.SetToolTip(modeInfoToolTip, resources.GetString("modeInfoToolTip.ToolTip"));
 			// 
 			// modeSelectorCB
 			// 
@@ -343,7 +343,7 @@ namespace ChargingControllerApp
 			modeSelectorCB.Size = new Size(262, 36);
 			modeSelectorCB.StartIndex = 0;
 			modeSelectorCB.TabIndex = 3;
-			modeSelectorCB.SelectedIndexChanged += modeSelectorCB_SelectedIndexChanged;
+			modeSelectorCB.SelectedIndexChanged += ModeSelectorCB_SelectedIndexChanged;
 			// 
 			// guna2HtmlLabel5
 			// 
@@ -485,7 +485,7 @@ namespace ChargingControllerApp
 			serverIpInput.ShadowDecoration.CustomizableEdges = customizableEdges38;
 			serverIpInput.Size = new Size(201, 35);
 			serverIpInput.TabIndex = 2;
-			serverIpInput.TextChanged += guna2TextBox3_TextChanged;
+			serverIpInput.TextChanged += ServerIpInput_TextChanged;
 			// 
 			// guna2HtmlLabel3
 			// 
@@ -509,26 +509,26 @@ namespace ChargingControllerApp
 			guna2HtmlLabel2.TabIndex = 0;
 			guna2HtmlLabel2.Text = "Connect to server";
 			// 
-			// guna2Button2
+			// closeButton
 			// 
-			guna2Button2.BackColor = Color.Transparent;
-			guna2Button2.BackgroundImage = Properties.Resources.close;
-			guna2Button2.BackgroundImageLayout = ImageLayout.Zoom;
-			guna2Button2.CustomizableEdges = customizableEdges39;
-			guna2Button2.DisabledState.BorderColor = Color.DarkGray;
-			guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
-			guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-			guna2Button2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-			guna2Button2.FillColor = Color.Transparent;
-			guna2Button2.Font = new Font("Segoe UI", 9F);
-			guna2Button2.ForeColor = Color.White;
-			guna2Button2.HoverState.BorderColor = Color.FromArgb(82, 86, 113);
-			guna2Button2.Location = new Point(338, 6);
-			guna2Button2.Name = "guna2Button2";
-			guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges40;
-			guna2Button2.Size = new Size(16, 17);
-			guna2Button2.TabIndex = 17;
-			guna2Button2.Click += guna2Button2_Click;
+			closeButton.BackColor = Color.Transparent;
+			closeButton.BackgroundImage = Properties.Resources.close;
+			closeButton.BackgroundImageLayout = ImageLayout.Zoom;
+			closeButton.CustomizableEdges = customizableEdges39;
+			closeButton.DisabledState.BorderColor = Color.DarkGray;
+			closeButton.DisabledState.CustomBorderColor = Color.DarkGray;
+			closeButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+			closeButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+			closeButton.FillColor = Color.Transparent;
+			closeButton.Font = new Font("Segoe UI", 9F);
+			closeButton.ForeColor = Color.White;
+			closeButton.HoverState.BorderColor = Color.FromArgb(82, 86, 113);
+			closeButton.Location = new Point(338, 6);
+			closeButton.Name = "closeButton";
+			closeButton.ShadowDecoration.CustomizableEdges = customizableEdges40;
+			closeButton.Size = new Size(16, 17);
+			closeButton.TabIndex = 17;
+			closeButton.Click += CloseButton_Click;
 			// 
 			// guna2PictureBox1
 			// 
@@ -544,16 +544,16 @@ namespace ChargingControllerApp
 			guna2PictureBox1.TabIndex = 2;
 			guna2PictureBox1.TabStop = false;
 			// 
-			// ServerConnectedImg
+			// serverConnectedImg
 			// 
-			ServerConnectedImg.BackgroundImage = Properties.Resources.circle_check_regular1;
-			ServerConnectedImg.BackgroundImageLayout = ImageLayout.Zoom;
-			ServerConnectedImg.Location = new Point(154, 109);
-			ServerConnectedImg.Name = "ServerConnectedImg";
-			ServerConnectedImg.Size = new Size(23, 26);
-			ServerConnectedImg.TabIndex = 0;
-			ServerConnectedImg.TabStop = false;
-			guna2HtmlToolTip1.SetToolTip(ServerConnectedImg, "Connected to server");
+			serverConnectedImg.BackgroundImage = Properties.Resources.circle_check_regular1;
+			serverConnectedImg.BackgroundImageLayout = ImageLayout.Zoom;
+			serverConnectedImg.Location = new Point(154, 109);
+			serverConnectedImg.Name = "serverConnectedImg";
+			serverConnectedImg.Size = new Size(23, 26);
+			serverConnectedImg.TabIndex = 0;
+			serverConnectedImg.TabStop = false;
+			guna2HtmlToolTip1.SetToolTip(serverConnectedImg, "Connected to server");
 			// 
 			// guna2PictureBox2
 			// 
@@ -569,16 +569,16 @@ namespace ChargingControllerApp
 			guna2PictureBox2.TabIndex = 19;
 			guna2PictureBox2.TabStop = false;
 			// 
-			// ChargingImg
+			// chargingImg
 			// 
-			ChargingImg.BackgroundImage = Properties.Resources.circle_check_regular1;
-			ChargingImg.BackgroundImageLayout = ImageLayout.Zoom;
-			ChargingImg.Location = new Point(250, 109);
-			ChargingImg.Name = "ChargingImg";
-			ChargingImg.Size = new Size(23, 26);
-			ChargingImg.TabIndex = 20;
-			ChargingImg.TabStop = false;
-			guna2HtmlToolTip1.SetToolTip(ChargingImg, "Smart charging activated");
+			chargingImg.BackgroundImage = Properties.Resources.circle_check_regular1;
+			chargingImg.BackgroundImageLayout = ImageLayout.Zoom;
+			chargingImg.Location = new Point(250, 109);
+			chargingImg.Name = "chargingImg";
+			chargingImg.Size = new Size(23, 26);
+			chargingImg.TabIndex = 20;
+			chargingImg.TabStop = false;
+			guna2HtmlToolTip1.SetToolTip(chargingImg, "Smart charging activated");
 			// 
 			// guna2HtmlToolTip1
 			// 
@@ -591,36 +591,36 @@ namespace ChargingControllerApp
 			guna2HtmlToolTip1.MaximumSize = new Size(0, 0);
 			guna2HtmlToolTip1.ReshowDelay = 100;
 			// 
-			// DischargingImg
+			// dischargingImg
 			// 
-			DischargingImg.BackgroundImage = (Image)resources.GetObject("DischargingImg.BackgroundImage");
-			DischargingImg.BackgroundImageLayout = ImageLayout.Zoom;
-			DischargingImg.CustomizableEdges = customizableEdges45;
-			DischargingImg.FillColor = Color.Transparent;
-			DischargingImg.ImageRotate = 0F;
-			DischargingImg.Location = new Point(250, 109);
-			DischargingImg.Name = "DischargingImg";
-			DischargingImg.ShadowDecoration.CustomizableEdges = customizableEdges46;
-			DischargingImg.Size = new Size(25, 26);
-			DischargingImg.TabIndex = 24;
-			DischargingImg.TabStop = false;
-			guna2HtmlToolTip1.SetToolTip(DischargingImg, "Waiting for the battery to discharge");
-			DischargingImg.Visible = false;
+			dischargingImg.BackgroundImage = (Image)resources.GetObject("dischargingImg.BackgroundImage");
+			dischargingImg.BackgroundImageLayout = ImageLayout.Zoom;
+			dischargingImg.CustomizableEdges = customizableEdges45;
+			dischargingImg.FillColor = Color.Transparent;
+			dischargingImg.ImageRotate = 0F;
+			dischargingImg.Location = new Point(250, 109);
+			dischargingImg.Name = "dischargingImg";
+			dischargingImg.ShadowDecoration.CustomizableEdges = customizableEdges46;
+			dischargingImg.Size = new Size(25, 26);
+			dischargingImg.TabIndex = 24;
+			dischargingImg.TabStop = false;
+			guna2HtmlToolTip1.SetToolTip(dischargingImg, "Waiting for the battery to discharge");
+			dischargingImg.Visible = false;
 			// 
-			// ServerDisconnectedImg
+			// serverDisconnectedImg
 			// 
-			ServerDisconnectedImg.BackgroundImage = Properties.Resources.circle_xmark_regular;
-			ServerDisconnectedImg.BackgroundImageLayout = ImageLayout.Zoom;
-			ServerDisconnectedImg.CustomizableEdges = customizableEdges47;
-			ServerDisconnectedImg.FillColor = Color.Transparent;
-			ServerDisconnectedImg.ImageRotate = 0F;
-			ServerDisconnectedImg.Location = new Point(153, 106);
-			ServerDisconnectedImg.Name = "ServerDisconnectedImg";
-			ServerDisconnectedImg.ShadowDecoration.CustomizableEdges = customizableEdges48;
-			ServerDisconnectedImg.Size = new Size(25, 34);
-			ServerDisconnectedImg.TabIndex = 21;
-			ServerDisconnectedImg.TabStop = false;
-			guna2HtmlToolTip2.SetToolTip(ServerDisconnectedImg, "Not connected to main server");
+			serverDisconnectedImg.BackgroundImage = Properties.Resources.circle_xmark_regular;
+			serverDisconnectedImg.BackgroundImageLayout = ImageLayout.Zoom;
+			serverDisconnectedImg.CustomizableEdges = customizableEdges47;
+			serverDisconnectedImg.FillColor = Color.Transparent;
+			serverDisconnectedImg.ImageRotate = 0F;
+			serverDisconnectedImg.Location = new Point(153, 106);
+			serverDisconnectedImg.Name = "serverDisconnectedImg";
+			serverDisconnectedImg.ShadowDecoration.CustomizableEdges = customizableEdges48;
+			serverDisconnectedImg.Size = new Size(25, 34);
+			serverDisconnectedImg.TabIndex = 21;
+			serverDisconnectedImg.TabStop = false;
+			guna2HtmlToolTip2.SetToolTip(serverDisconnectedImg, "Not connected to main server");
 			// 
 			// guna2HtmlToolTip2
 			// 
@@ -629,36 +629,36 @@ namespace ChargingControllerApp
 			guna2HtmlToolTip2.ForeColor = Color.Red;
 			guna2HtmlToolTip2.MaximumSize = new Size(0, 0);
 			// 
-			// NotChargingImg
+			// notChargingImg
 			// 
-			NotChargingImg.BackgroundImage = Properties.Resources.circle_xmark_regular1;
-			NotChargingImg.BackgroundImageLayout = ImageLayout.Zoom;
-			NotChargingImg.CustomizableEdges = customizableEdges49;
-			NotChargingImg.FillColor = Color.Transparent;
-			NotChargingImg.ImageRotate = 0F;
-			NotChargingImg.Location = new Point(250, 110);
-			NotChargingImg.Name = "NotChargingImg";
-			NotChargingImg.ShadowDecoration.CustomizableEdges = customizableEdges50;
-			NotChargingImg.Size = new Size(25, 26);
-			NotChargingImg.TabIndex = 22;
-			NotChargingImg.TabStop = false;
-			guna2HtmlToolTip2.SetToolTip(NotChargingImg, "Not currently charging via the LPM system");
+			notChargingImg.BackgroundImage = Properties.Resources.circle_xmark_regular1;
+			notChargingImg.BackgroundImageLayout = ImageLayout.Zoom;
+			notChargingImg.CustomizableEdges = customizableEdges49;
+			notChargingImg.FillColor = Color.Transparent;
+			notChargingImg.ImageRotate = 0F;
+			notChargingImg.Location = new Point(250, 110);
+			notChargingImg.Name = "notChargingImg";
+			notChargingImg.ShadowDecoration.CustomizableEdges = customizableEdges50;
+			notChargingImg.Size = new Size(25, 26);
+			notChargingImg.TabIndex = 22;
+			notChargingImg.TabStop = false;
+			guna2HtmlToolTip2.SetToolTip(notChargingImg, "Not currently charging via the LPM system");
 			// 
-			// ErrorChargingImg
+			// errorChargingImg
 			// 
-			ErrorChargingImg.BackgroundImage = (Image)resources.GetObject("ErrorChargingImg.BackgroundImage");
-			ErrorChargingImg.BackgroundImageLayout = ImageLayout.Zoom;
-			ErrorChargingImg.CustomizableEdges = customizableEdges51;
-			ErrorChargingImg.FillColor = Color.Transparent;
-			ErrorChargingImg.ImageRotate = 0F;
-			ErrorChargingImg.Location = new Point(250, 109);
-			ErrorChargingImg.Name = "ErrorChargingImg";
-			ErrorChargingImg.ShadowDecoration.CustomizableEdges = customizableEdges52;
-			ErrorChargingImg.Size = new Size(25, 26);
-			ErrorChargingImg.TabIndex = 25;
-			ErrorChargingImg.TabStop = false;
-			guna2HtmlToolTip2.SetToolTip(ErrorChargingImg, "Charging command sent but laptop failed to begin charging");
-			ErrorChargingImg.Visible = false;
+			errorChargingImg.BackgroundImage = (Image)resources.GetObject("errorChargingImg.BackgroundImage");
+			errorChargingImg.BackgroundImageLayout = ImageLayout.Zoom;
+			errorChargingImg.CustomizableEdges = customizableEdges51;
+			errorChargingImg.FillColor = Color.Transparent;
+			errorChargingImg.ImageRotate = 0F;
+			errorChargingImg.Location = new Point(250, 109);
+			errorChargingImg.Name = "errorChargingImg";
+			errorChargingImg.ShadowDecoration.CustomizableEdges = customizableEdges52;
+			errorChargingImg.Size = new Size(25, 26);
+			errorChargingImg.TabIndex = 25;
+			errorChargingImg.TabStop = false;
+			guna2HtmlToolTip2.SetToolTip(errorChargingImg, "Charging command sent but laptop failed to begin charging");
+			errorChargingImg.Visible = false;
 			// 
 			// guna2HtmlToolTip3
 			// 
@@ -704,7 +704,7 @@ namespace ChargingControllerApp
 			// 
 			// textOverflowTimer
 			// 
-			textOverflowTimer.Tick += textOverflowTimer_Tick;
+			textOverflowTimer.Tick += TextOverflowTimer_Tick;
 			// 
 			// messageLabel
 			// 
@@ -727,19 +727,19 @@ namespace ChargingControllerApp
 			ClientSize = new Size(360, 563);
 			Controls.Add(messageLabel);
 			Controls.Add(statusMessageTB);
-			Controls.Add(NotChargingImg);
-			Controls.Add(ServerDisconnectedImg);
-			Controls.Add(ChargingImg);
+			Controls.Add(notChargingImg);
+			Controls.Add(serverDisconnectedImg);
+			Controls.Add(chargingImg);
 			Controls.Add(guna2PictureBox2);
 			Controls.Add(guna2PictureBox1);
-			Controls.Add(ServerConnectedImg);
-			Controls.Add(guna2Button2);
+			Controls.Add(serverConnectedImg);
+			Controls.Add(closeButton);
 			Controls.Add(guna2TabControl1);
 			Controls.Add(label2);
 			Controls.Add(label1);
 			Controls.Add(pictureBox1);
-			Controls.Add(DischargingImg);
-			Controls.Add(ErrorChargingImg);
+			Controls.Add(dischargingImg);
+			Controls.Add(errorChargingImg);
 			FormBorderStyle = FormBorderStyle.None;
 			Margin = new Padding(2);
 			Name = "MainForm";
@@ -748,17 +748,17 @@ namespace ChargingControllerApp
 			guna2TabControl1.ResumeLayout(false);
 			tabPage2.ResumeLayout(false);
 			tabPage2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)ModeInfoToolTip).EndInit();
+			((System.ComponentModel.ISupportInitialize)modeInfoToolTip).EndInit();
 			tabPage1.ResumeLayout(false);
 			tabPage1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
-			((System.ComponentModel.ISupportInitialize)ServerConnectedImg).EndInit();
+			((System.ComponentModel.ISupportInitialize)serverConnectedImg).EndInit();
 			((System.ComponentModel.ISupportInitialize)guna2PictureBox2).EndInit();
-			((System.ComponentModel.ISupportInitialize)ChargingImg).EndInit();
-			((System.ComponentModel.ISupportInitialize)DischargingImg).EndInit();
-			((System.ComponentModel.ISupportInitialize)ServerDisconnectedImg).EndInit();
-			((System.ComponentModel.ISupportInitialize)NotChargingImg).EndInit();
-			((System.ComponentModel.ISupportInitialize)ErrorChargingImg).EndInit();
+			((System.ComponentModel.ISupportInitialize)chargingImg).EndInit();
+			((System.ComponentModel.ISupportInitialize)dischargingImg).EndInit();
+			((System.ComponentModel.ISupportInitialize)serverDisconnectedImg).EndInit();
+			((System.ComponentModel.ISupportInitialize)notChargingImg).EndInit();
+			((System.ComponentModel.ISupportInitialize)errorChargingImg).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -781,23 +781,23 @@ namespace ChargingControllerApp
 		private Guna.UI2.WinForms.Guna2TextBox serverIpInput;
 		private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
 		private Guna.UI2.WinForms.Guna2CircleProgressBar serverConnectionLoading;
-		private Guna.UI2.WinForms.Guna2Button guna2Button2;
-		private PictureBox ServerConnectedImg;
+		private Guna.UI2.WinForms.Guna2Button closeButton;
+		private PictureBox serverConnectedImg;
 		private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
 		private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
-		private PictureBox ChargingImg;
+		private PictureBox chargingImg;
 		private Guna.UI2.WinForms.Guna2HtmlToolTip guna2HtmlToolTip1;
-		private Guna.UI2.WinForms.Guna2PictureBox ServerDisconnectedImg;
+		private Guna.UI2.WinForms.Guna2PictureBox serverDisconnectedImg;
 		private Guna.UI2.WinForms.Guna2HtmlToolTip guna2HtmlToolTip2;
-		private Guna.UI2.WinForms.Guna2PictureBox NotChargingImg;
+		private Guna.UI2.WinForms.Guna2PictureBox notChargingImg;
 		private Guna2ComboBox modeSelectorCB;
 		private Guna2HtmlLabel guna2HtmlLabel5;
 		private Guna2HtmlToolTip guna2HtmlToolTip3;
-		private Guna2PictureBox ModeInfoToolTip;
+		private Guna2PictureBox modeInfoToolTip;
 		private Guna2TrackBar batteryMaxSlider;
-		private Guna2HtmlLabel MaxBatteryLabel;
+		private Guna2HtmlLabel maxBatteryLabel;
 		private Guna2HtmlLabel guna2HtmlLabel1;
-		private Guna2HtmlLabel MinBatteryLabel;
+		private Guna2HtmlLabel minBatteryLabel;
 		private Guna2HtmlLabel guna2HtmlLabel7;
 		private Guna2TrackBar batteryMinSlider;
 		private System.Windows.Forms.Timer mainTimer;
@@ -805,8 +805,8 @@ namespace ChargingControllerApp
 		private Guna2TextBox serverTokentTB;
 		private Guna2TextBox statusMessageTB;
 		private System.Windows.Forms.Timer textOverflowTimer;
-		private Guna2PictureBox DischargingImg;
-		private Guna2PictureBox ErrorChargingImg;
+		private Guna2PictureBox dischargingImg;
+		private Guna2PictureBox errorChargingImg;
 		private Guna2HtmlLabel messageLabel;
 	}
 }

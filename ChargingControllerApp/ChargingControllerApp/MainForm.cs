@@ -32,8 +32,8 @@ namespace ChargingControllerApp
 
 			_uiHelper = new UIElementsDisplayHelper(
 				this,
-				ServerConnectedImg,
-				ServerDisconnectedImg,
+				serverConnectedImg,
+				serverDisconnectedImg,
 				serverConnectionLoading,
 				serverIpInput,
 				serverTokentTB,
@@ -44,12 +44,12 @@ namespace ChargingControllerApp
 				guna2TabControl1,
 				statusMessageTB,
 				guna2HtmlToolTip3,
-				ModeInfoToolTip,
+				modeInfoToolTip,
 				mainTimer,
-				NotChargingImg,
-				DischargingImg,
-				ErrorChargingImg,
-				ChargingImg,
+				notChargingImg,
+				dischargingImg,
+				errorChargingImg,
+				chargingImg,
 				messageLabel
 			);
 
@@ -153,7 +153,7 @@ namespace ChargingControllerApp
 			base.WndProc(ref m);
 		}
 
-		private void notifyIcon_MouseDoubleClick(object Sender, EventArgs e)
+		private void NotifyIcon_MouseDoubleClick(object Sender, EventArgs e)
 		{
 			_uiHelper.ShowApp();
 			Activate();
@@ -165,7 +165,7 @@ namespace ChargingControllerApp
 			_uiHelper.HideApp();
 		}
 
-		private void exitToolStripMenuItem_Click(object? sender, EventArgs e)
+		private void ExitToolStripMenuItem_Click(object? sender, EventArgs e)
 		{
 			DialogResult dialog = MessageBox.Show("If you exit the app you will lose control over the LPM System! Do you still want to exit?", "Alert!", MessageBoxButtons.YesNo);
 
@@ -175,12 +175,12 @@ namespace ChargingControllerApp
 			}
 		}
 
-		private void guna2Button2_Click(object sender, EventArgs e)
+		private void CloseButton_Click(object sender, EventArgs e)
 		{
 			Hide();
 		}
 
-		private void guna2TrackBar1_Scroll(object sender, ScrollEventArgs e)
+		private void BatteryMaxSlider_Scroll(object sender, ScrollEventArgs e)
 		{
 			int value = batteryMaxSlider.Value;
 			int snapInterval = 5;
@@ -200,21 +200,21 @@ namespace ChargingControllerApp
 				batteryMaxSlider.Value = value;
 			}
 
-			MaxBatteryLabel.Text = value.ToString() + "%";
+			maxBatteryLabel.Text = value.ToString() + "%";
 
 			maxPercentage = value;
 
 			if (value <= batteryMinSlider.Value)
 			{
 				batteryMinSlider.Value = value - 10;
-				MinBatteryLabel.Text = batteryMinSlider.Value.ToString() + "%";
+				minBatteryLabel.Text = batteryMinSlider.Value.ToString() + "%";
 				minPercentage = value - 10;
 			}
 
 			SaveUserConfig();
 		}
 
-		private void batteryMinSlider_Scroll(object sender, ScrollEventArgs e)
+		private void BatteryMinSlider_Scroll(object sender, ScrollEventArgs e)
 		{
 			int value = batteryMinSlider.Value;
 			int snapInterval = 5;
@@ -234,21 +234,21 @@ namespace ChargingControllerApp
 				batteryMinSlider.Value = value;
 			}
 
-			MinBatteryLabel.Text = value.ToString() + "%";
+			minBatteryLabel.Text = value.ToString() + "%";
 
 			minPercentage = value;
 
 			if (value >= batteryMaxSlider.Value)
 			{
 				batteryMaxSlider.Value = value + 10;
-				MaxBatteryLabel.Text = batteryMaxSlider.Value.ToString() + "%";
+				maxBatteryLabel.Text = batteryMaxSlider.Value.ToString() + "%";
 				maxPercentage = value + 10;
 			}
 
 			SaveUserConfig();
 		}
 
-		private void guna2TextBox3_TextChanged(object sender, EventArgs e)
+		private void ServerIpInput_TextChanged(object sender, EventArgs e)
 		{
 			if (!ValidationHelper.IsIpValid(serverIpInput.Text))
 			{
@@ -262,7 +262,7 @@ namespace ChargingControllerApp
 			connectToServerBn.Enabled = true;
 		}
 
-		private void textOverflowTimer_Tick(object sender, EventArgs e)
+		private void TextOverflowTimer_Tick(object sender, EventArgs e)
 		{
 			string message = _uiHelper.GetMessage();
 
@@ -309,7 +309,7 @@ namespace ChargingControllerApp
 			}
 		}
 
-		private void modeSelectorCB_SelectedIndexChanged(object sender, EventArgs e)
+		private void ModeSelectorCB_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			currentChargingMode = (ChargingModes)modeSelectorCB.SelectedIndex;
 
@@ -352,11 +352,11 @@ namespace ChargingControllerApp
 
 			minPercentage = model.MinSliderValue;
 			batteryMinSlider.Value = model.MinSliderValue;
-			MinBatteryLabel.Text = model.MinSliderValue.ToString() + "%";
+			minBatteryLabel.Text = model.MinSliderValue.ToString() + "%";
 
 			maxPercentage = model.MaxSliderValue;
 			batteryMaxSlider.Value = model.MaxSliderValue;
-			MaxBatteryLabel.Text = model.MaxSliderValue.ToString() + "%";
+			maxBatteryLabel.Text = model.MaxSliderValue.ToString() + "%";
 
 			_uiHelper.SelectMode(model.ChargingMode);
 		}
