@@ -32,33 +32,33 @@ namespace ChargingControllerApp
 		{
 			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges37 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges38 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges39 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges40 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges41 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges42 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges43 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges44 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges45 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges46 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges47 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges48 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges49 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges50 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges51 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges52 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges53 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+			Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges54 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
 			notifyIcon = new NotifyIcon(components);
 			contextMenuStrip1 = new ContextMenuStrip(components);
 			toolStripMenuItem1 = new ToolStripMenuItem();
@@ -101,6 +101,7 @@ namespace ChargingControllerApp
 			mainTimer = new System.Windows.Forms.Timer(components);
 			statusMessageTB = new Guna2TextBox();
 			textOverflowTimer = new System.Windows.Forms.Timer(components);
+			messageLabel = new Guna2HtmlLabel();
 			contextMenuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			guna2TabControl1.SuspendLayout();
@@ -312,12 +313,12 @@ namespace ChargingControllerApp
 			// 
 			ModeInfoToolTip.BackgroundImage = Properties.Resources.infoIcon;
 			ModeInfoToolTip.BackgroundImageLayout = ImageLayout.Zoom;
-			ModeInfoToolTip.CustomizableEdges = customizableEdges1;
+			ModeInfoToolTip.CustomizableEdges = customizableEdges28;
 			ModeInfoToolTip.FillColor = Color.Transparent;
 			ModeInfoToolTip.ImageRotate = 0F;
 			ModeInfoToolTip.Location = new Point(300, 49);
 			ModeInfoToolTip.Name = "ModeInfoToolTip";
-			ModeInfoToolTip.ShadowDecoration.CustomizableEdges = customizableEdges2;
+			ModeInfoToolTip.ShadowDecoration.CustomizableEdges = customizableEdges29;
 			ModeInfoToolTip.Size = new Size(25, 28);
 			ModeInfoToolTip.TabIndex = 22;
 			ModeInfoToolTip.TabStop = false;
@@ -326,7 +327,7 @@ namespace ChargingControllerApp
 			// modeSelectorCB
 			// 
 			modeSelectorCB.BackColor = Color.Transparent;
-			modeSelectorCB.CustomizableEdges = customizableEdges3;
+			modeSelectorCB.CustomizableEdges = customizableEdges30;
 			modeSelectorCB.DrawMode = DrawMode.OwnerDrawFixed;
 			modeSelectorCB.DropDownStyle = ComboBoxStyle.DropDownList;
 			modeSelectorCB.Enabled = false;
@@ -338,7 +339,7 @@ namespace ChargingControllerApp
 			modeSelectorCB.Items.AddRange(new object[] { "Best Battery Life", "Constant Battery Level", "Off" });
 			modeSelectorCB.Location = new Point(28, 45);
 			modeSelectorCB.Name = "modeSelectorCB";
-			modeSelectorCB.ShadowDecoration.CustomizableEdges = customizableEdges4;
+			modeSelectorCB.ShadowDecoration.CustomizableEdges = customizableEdges31;
 			modeSelectorCB.Size = new Size(262, 36);
 			modeSelectorCB.StartIndex = 0;
 			modeSelectorCB.TabIndex = 3;
@@ -378,7 +379,7 @@ namespace ChargingControllerApp
 			// serverTokentTB
 			// 
 			serverTokentTB.BorderRadius = 10;
-			serverTokentTB.CustomizableEdges = customizableEdges5;
+			serverTokentTB.CustomizableEdges = customizableEdges32;
 			serverTokentTB.DefaultText = "";
 			serverTokentTB.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
 			serverTokentTB.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -394,7 +395,7 @@ namespace ChargingControllerApp
 			serverTokentTB.PasswordChar = '\0';
 			serverTokentTB.PlaceholderText = "";
 			serverTokentTB.SelectedText = "";
-			serverTokentTB.ShadowDecoration.CustomizableEdges = customizableEdges6;
+			serverTokentTB.ShadowDecoration.CustomizableEdges = customizableEdges33;
 			serverTokentTB.Size = new Size(201, 35);
 			serverTokentTB.TabIndex = 9;
 			// 
@@ -423,7 +424,7 @@ namespace ChargingControllerApp
 			serverConnectionLoading.ProgressColor = Color.FromArgb(37, 246, 32);
 			serverConnectionLoading.ProgressColor2 = Color.FromArgb(37, 246, 32);
 			serverConnectionLoading.ProgressThickness = 5;
-			serverConnectionLoading.ShadowDecoration.CustomizableEdges = customizableEdges7;
+			serverConnectionLoading.ShadowDecoration.CustomizableEdges = customizableEdges34;
 			serverConnectionLoading.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
 			serverConnectionLoading.Size = new Size(38, 38);
 			serverConnectionLoading.TabIndex = 7;
@@ -434,7 +435,7 @@ namespace ChargingControllerApp
 			// connectToServerBn
 			// 
 			connectToServerBn.BorderRadius = 10;
-			connectToServerBn.CustomizableEdges = customizableEdges8;
+			connectToServerBn.CustomizableEdges = customizableEdges35;
 			connectToServerBn.DisabledState.BorderColor = Color.DarkGray;
 			connectToServerBn.DisabledState.CustomBorderColor = Color.FromArgb(176, 255, 194);
 			connectToServerBn.DisabledState.FillColor = Color.FromArgb(176, 255, 194);
@@ -445,7 +446,7 @@ namespace ChargingControllerApp
 			connectToServerBn.ForeColor = Color.FromArgb(40, 42, 55);
 			connectToServerBn.Location = new Point(88, 239);
 			connectToServerBn.Name = "connectToServerBn";
-			connectToServerBn.ShadowDecoration.CustomizableEdges = customizableEdges9;
+			connectToServerBn.ShadowDecoration.CustomizableEdges = customizableEdges36;
 			connectToServerBn.Size = new Size(179, 45);
 			connectToServerBn.TabIndex = 5;
 			connectToServerBn.Text = "Connect";
@@ -465,7 +466,7 @@ namespace ChargingControllerApp
 			// serverIpInput
 			// 
 			serverIpInput.BorderRadius = 10;
-			serverIpInput.CustomizableEdges = customizableEdges10;
+			serverIpInput.CustomizableEdges = customizableEdges37;
 			serverIpInput.DefaultText = "";
 			serverIpInput.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
 			serverIpInput.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -481,7 +482,7 @@ namespace ChargingControllerApp
 			serverIpInput.PasswordChar = '\0';
 			serverIpInput.PlaceholderText = "";
 			serverIpInput.SelectedText = "";
-			serverIpInput.ShadowDecoration.CustomizableEdges = customizableEdges11;
+			serverIpInput.ShadowDecoration.CustomizableEdges = customizableEdges38;
 			serverIpInput.Size = new Size(201, 35);
 			serverIpInput.TabIndex = 2;
 			serverIpInput.TextChanged += guna2TextBox3_TextChanged;
@@ -513,7 +514,7 @@ namespace ChargingControllerApp
 			guna2Button2.BackColor = Color.Transparent;
 			guna2Button2.BackgroundImage = Properties.Resources.close;
 			guna2Button2.BackgroundImageLayout = ImageLayout.Zoom;
-			guna2Button2.CustomizableEdges = customizableEdges12;
+			guna2Button2.CustomizableEdges = customizableEdges39;
 			guna2Button2.DisabledState.BorderColor = Color.DarkGray;
 			guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
 			guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -524,7 +525,7 @@ namespace ChargingControllerApp
 			guna2Button2.HoverState.BorderColor = Color.FromArgb(82, 86, 113);
 			guna2Button2.Location = new Point(338, 6);
 			guna2Button2.Name = "guna2Button2";
-			guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges13;
+			guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges40;
 			guna2Button2.Size = new Size(16, 17);
 			guna2Button2.TabIndex = 17;
 			guna2Button2.Click += guna2Button2_Click;
@@ -533,12 +534,12 @@ namespace ChargingControllerApp
 			// 
 			guna2PictureBox1.BackgroundImage = Properties.Resources.server;
 			guna2PictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-			guna2PictureBox1.CustomizableEdges = customizableEdges14;
+			guna2PictureBox1.CustomizableEdges = customizableEdges41;
 			guna2PictureBox1.FillColor = Color.Transparent;
 			guna2PictureBox1.ImageRotate = 0F;
 			guna2PictureBox1.Location = new Point(98, 103);
 			guna2PictureBox1.Name = "guna2PictureBox1";
-			guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges15;
+			guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges42;
 			guna2PictureBox1.Size = new Size(50, 44);
 			guna2PictureBox1.TabIndex = 2;
 			guna2PictureBox1.TabStop = false;
@@ -558,12 +559,12 @@ namespace ChargingControllerApp
 			// 
 			guna2PictureBox2.BackgroundImage = (Image)resources.GetObject("guna2PictureBox2.BackgroundImage");
 			guna2PictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
-			guna2PictureBox2.CustomizableEdges = customizableEdges16;
+			guna2PictureBox2.CustomizableEdges = customizableEdges43;
 			guna2PictureBox2.FillColor = Color.Transparent;
 			guna2PictureBox2.ImageRotate = 0F;
 			guna2PictureBox2.Location = new Point(200, 101);
 			guna2PictureBox2.Name = "guna2PictureBox2";
-			guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges17;
+			guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges44;
 			guna2PictureBox2.Size = new Size(51, 44);
 			guna2PictureBox2.TabIndex = 19;
 			guna2PictureBox2.TabStop = false;
@@ -594,12 +595,12 @@ namespace ChargingControllerApp
 			// 
 			DischargingImg.BackgroundImage = (Image)resources.GetObject("DischargingImg.BackgroundImage");
 			DischargingImg.BackgroundImageLayout = ImageLayout.Zoom;
-			DischargingImg.CustomizableEdges = customizableEdges18;
+			DischargingImg.CustomizableEdges = customizableEdges45;
 			DischargingImg.FillColor = Color.Transparent;
 			DischargingImg.ImageRotate = 0F;
 			DischargingImg.Location = new Point(250, 109);
 			DischargingImg.Name = "DischargingImg";
-			DischargingImg.ShadowDecoration.CustomizableEdges = customizableEdges19;
+			DischargingImg.ShadowDecoration.CustomizableEdges = customizableEdges46;
 			DischargingImg.Size = new Size(25, 26);
 			DischargingImg.TabIndex = 24;
 			DischargingImg.TabStop = false;
@@ -610,12 +611,12 @@ namespace ChargingControllerApp
 			// 
 			ServerDisconnectedImg.BackgroundImage = Properties.Resources.circle_xmark_regular;
 			ServerDisconnectedImg.BackgroundImageLayout = ImageLayout.Zoom;
-			ServerDisconnectedImg.CustomizableEdges = customizableEdges20;
+			ServerDisconnectedImg.CustomizableEdges = customizableEdges47;
 			ServerDisconnectedImg.FillColor = Color.Transparent;
 			ServerDisconnectedImg.ImageRotate = 0F;
 			ServerDisconnectedImg.Location = new Point(153, 106);
 			ServerDisconnectedImg.Name = "ServerDisconnectedImg";
-			ServerDisconnectedImg.ShadowDecoration.CustomizableEdges = customizableEdges21;
+			ServerDisconnectedImg.ShadowDecoration.CustomizableEdges = customizableEdges48;
 			ServerDisconnectedImg.Size = new Size(25, 34);
 			ServerDisconnectedImg.TabIndex = 21;
 			ServerDisconnectedImg.TabStop = false;
@@ -632,12 +633,12 @@ namespace ChargingControllerApp
 			// 
 			NotChargingImg.BackgroundImage = Properties.Resources.circle_xmark_regular1;
 			NotChargingImg.BackgroundImageLayout = ImageLayout.Zoom;
-			NotChargingImg.CustomizableEdges = customizableEdges22;
+			NotChargingImg.CustomizableEdges = customizableEdges49;
 			NotChargingImg.FillColor = Color.Transparent;
 			NotChargingImg.ImageRotate = 0F;
 			NotChargingImg.Location = new Point(250, 110);
 			NotChargingImg.Name = "NotChargingImg";
-			NotChargingImg.ShadowDecoration.CustomizableEdges = customizableEdges23;
+			NotChargingImg.ShadowDecoration.CustomizableEdges = customizableEdges50;
 			NotChargingImg.Size = new Size(25, 26);
 			NotChargingImg.TabIndex = 22;
 			NotChargingImg.TabStop = false;
@@ -647,12 +648,12 @@ namespace ChargingControllerApp
 			// 
 			ErrorChargingImg.BackgroundImage = (Image)resources.GetObject("ErrorChargingImg.BackgroundImage");
 			ErrorChargingImg.BackgroundImageLayout = ImageLayout.Zoom;
-			ErrorChargingImg.CustomizableEdges = customizableEdges24;
+			ErrorChargingImg.CustomizableEdges = customizableEdges51;
 			ErrorChargingImg.FillColor = Color.Transparent;
 			ErrorChargingImg.ImageRotate = 0F;
 			ErrorChargingImg.Location = new Point(250, 109);
 			ErrorChargingImg.Name = "ErrorChargingImg";
-			ErrorChargingImg.ShadowDecoration.CustomizableEdges = customizableEdges25;
+			ErrorChargingImg.ShadowDecoration.CustomizableEdges = customizableEdges52;
 			ErrorChargingImg.Size = new Size(25, 26);
 			ErrorChargingImg.TabIndex = 25;
 			ErrorChargingImg.TabStop = false;
@@ -677,8 +678,8 @@ namespace ChargingControllerApp
 			// statusMessageTB
 			// 
 			statusMessageTB.BorderRadius = 4;
-			statusMessageTB.CustomizableEdges = customizableEdges26;
-			statusMessageTB.DefaultText = "Not Connected";
+			statusMessageTB.CustomizableEdges = customizableEdges53;
+			statusMessageTB.DefaultText = "";
 			statusMessageTB.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
 			statusMessageTB.DisabledState.FillColor = Color.FromArgb(255, 132, 135);
 			statusMessageTB.DisabledState.ForeColor = Color.Black;
@@ -696,7 +697,7 @@ namespace ChargingControllerApp
 			statusMessageTB.PlaceholderText = "";
 			statusMessageTB.ReadOnly = true;
 			statusMessageTB.SelectedText = "";
-			statusMessageTB.ShadowDecoration.CustomizableEdges = customizableEdges27;
+			statusMessageTB.ShadowDecoration.CustomizableEdges = customizableEdges54;
 			statusMessageTB.Size = new Size(354, 32);
 			statusMessageTB.TabIndex = 23;
 			statusMessageTB.TextAlign = HorizontalAlignment.Center;
@@ -705,12 +706,26 @@ namespace ChargingControllerApp
 			// 
 			textOverflowTimer.Tick += textOverflowTimer_Tick;
 			// 
+			// messageLabel
+			// 
+			messageLabel.AutoSize = false;
+			messageLabel.BackColor = Color.FromArgb(218, 254, 225);
+			messageLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			messageLabel.Location = new Point(6, 173);
+			messageLabel.Name = "messageLabel";
+			messageLabel.Size = new Size(351, 21);
+			messageLabel.TabIndex = 26;
+			messageLabel.Text = "Not Connected";
+			messageLabel.TextAlignment = ContentAlignment.TopCenter;
+			messageLabel.UseGdiPlusTextRendering = true;
+			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(40, 42, 55);
 			ClientSize = new Size(360, 563);
+			Controls.Add(messageLabel);
 			Controls.Add(statusMessageTB);
 			Controls.Add(NotChargingImg);
 			Controls.Add(ServerDisconnectedImg);
@@ -792,5 +807,6 @@ namespace ChargingControllerApp
 		private System.Windows.Forms.Timer textOverflowTimer;
 		private Guna2PictureBox DischargingImg;
 		private Guna2PictureBox ErrorChargingImg;
+		private Guna2HtmlLabel messageLabel;
 	}
 }

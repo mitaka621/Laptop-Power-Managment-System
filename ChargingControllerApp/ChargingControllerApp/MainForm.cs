@@ -6,7 +6,6 @@ using ChargingControllerApp.Utils;
 using ChargingControllerApp.Utils.Contracts;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
-using Newtonsoft.Json.Linq;
 using System.Text.Json;
 
 namespace ChargingControllerApp
@@ -50,7 +49,8 @@ namespace ChargingControllerApp
 				NotChargingImg,
 				DischargingImg,
 				ErrorChargingImg,
-				ChargingImg
+				ChargingImg,
+				messageLabel
 			);
 
 			StartPosition = FormStartPosition.Manual;
@@ -204,14 +204,14 @@ namespace ChargingControllerApp
 
 			maxPercentage = value;
 
-            if (value<= batteryMinSlider.Value)
-            {
-                batteryMinSlider.Value= value-10;
-                MinBatteryLabel.Text = batteryMinSlider.Value.ToString() + "%";
-				minPercentage= value-10;
-            }
+			if (value <= batteryMinSlider.Value)
+			{
+				batteryMinSlider.Value = value - 10;
+				MinBatteryLabel.Text = batteryMinSlider.Value.ToString() + "%";
+				minPercentage = value - 10;
+			}
 
-            SaveUserConfig();
+			SaveUserConfig();
 		}
 
 		private void batteryMinSlider_Scroll(object sender, ScrollEventArgs e)
@@ -238,14 +238,14 @@ namespace ChargingControllerApp
 
 			minPercentage = value;
 
-            if (value>=batteryMaxSlider.Value)
-            {
+			if (value >= batteryMaxSlider.Value)
+			{
 				batteryMaxSlider.Value = value + 10;
-                MaxBatteryLabel.Text = batteryMaxSlider.Value.ToString() + "%";
+				MaxBatteryLabel.Text = batteryMaxSlider.Value.ToString() + "%";
 				maxPercentage = value + 10;
-            }
+			}
 
-            SaveUserConfig();
+			SaveUserConfig();
 		}
 
 		private void guna2TextBox3_TextChanged(object sender, EventArgs e)
@@ -264,11 +264,19 @@ namespace ChargingControllerApp
 
 		private void textOverflowTimer_Tick(object sender, EventArgs e)
 		{
-			if (statusMessageTB.Text.Length > 40)
-			{
-				string? newStr = new string(statusMessageTB.Text.Skip(1).Append(statusMessageTB.Text[0]).ToArray());
+			string message = _uiHelper.GetMessage();
 
-				statusMessageTB.Text = newStr;
+			if (message.Length > 43)
+			{
+				string? newStr = new string(message.Skip(1).Append(message[0]).ToArray());
+
+				messageLabel.Text = new string(newStr.Take(43).ToArray());
+
+				_uiHelper.WriteMessage(newStr);
+			}
+			else
+			{
+				messageLabel.Text = message;
 			}
 		}
 

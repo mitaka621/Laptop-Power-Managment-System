@@ -2340,10 +2340,13 @@
         iCmxTgAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="guna2HtmlToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>266, 24</value>
+  </metadata>
   <data name="DischargingImg.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAg8AAAIPCAYAAAD0JT2iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vQAADr0BR/uQrQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAF0sSURBVHhe7d0H
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAF0sSURBVHhe7d0H
         mB1V2QfwG3pJ9p5zdpNoCBrsogJ2P8tn+ewNCyg27L137PlsKFY+G7FFYoI65W7WQEQFEQVFaYqAhS4I
         KJ1kd2dmk73fe+7uwt25/0223DLnzP95/D2Rs7v3zvuecs/MnTmnUq/XichVQWXX4XjgrmmkDxqtVZ+U
         RuaFWWhel4TmfWmsP5OE+hvysxPS0NSySP0yifQZaWzOkbJLxFXyOzdPE+lU1HNua/6dJNY3SNll4mL7
@@ -2750,7 +2753,7 @@
   <data name="ErrorChargingImg.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAENmSURBVHhe7d13
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAENmSURBVHhe7d13
         gCxllffxA1yiZBAEcQWziEoQXXcRQUDXgAqC+qogGcOq6Lrq6wpiFjOKAq5Z1F10X1wBEQUzBkRQEQwI
         hjUQJAdJ133P6aoZe7p/996ZnuruOk99//jU7Tozt6fPU6eru6ufYP/7v/8LoM3MVnWbu23dY93T3WHu
         le4t7nj3afff7ivuO+48d4n7tbtmwO3O73mOiA3+3mUu7iPuK+4z7jv+RvytD7g3u1e4eCz7uj3cQ108

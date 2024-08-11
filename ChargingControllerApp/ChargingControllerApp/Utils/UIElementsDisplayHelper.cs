@@ -7,9 +7,14 @@ namespace ChargingControllerApp.Utils
 {
 	public class UIElementsDisplayHelper : IUIElementsDisplayHelper
 	{
-		private SmartChargingStates lastChargingState= SmartChargingStates.Deactivated;
+		private SmartChargingStates lastChargingState = SmartChargingStates.Deactivated;
+		private SoundPlayer soundConnected = new SoundPlayer(Path.GetFullPath(@"Resourses\message-incoming-2-199577.wav"));
+		private SoundPlayer soundDisconnect = new SoundPlayer(Path.GetFullPath(@"Resourses\bottle-205353.wav"));
 
-        public Form MainForm { get; private set; }
+		private string messageToShow = string.Empty;
+		private object messageLock = new();
+
+		public Form MainForm { get; private set; }
 		public PictureBox ServerConnectedImg { get; private set; }
 		public PictureBox ServerDisconnectedImg { get; }
 		public Guna2CircleProgressBar ServerConnectionLoading { get; private set; }
@@ -25,7 +30,7 @@ namespace ChargingControllerApp.Utils
 		public Guna2TextBox StatusMessageTB { get; private set; }
 		public Guna2HtmlToolTip Guna2HtmlToolTip3 { get; private set; }
 		public Control ModeInfoToolTip { get; private set; }
-
+		public Guna2HtmlLabel MessageLabel { get; private set; }
 		public System.Windows.Forms.Timer MainTimer { get; private set; }
 
 		public Guna2PictureBox NotChargingImg { get; private set; }
@@ -52,7 +57,8 @@ namespace ChargingControllerApp.Utils
 			Guna2PictureBox notChargingImg,
 			Guna2PictureBox dischargingImg,
 			Guna2PictureBox errorChargingImg,
-			PictureBox chargingImg
+			PictureBox chargingImg,
+			Guna2HtmlLabel messageLabel
 		)
 		{
 			MainForm = mainForm;
@@ -78,6 +84,7 @@ namespace ChargingControllerApp.Utils
 			DischargingImg = dischargingImg;
 			ErrorChargingImg = errorChargingImg;
 			ChargingImg = chargingImg;
+			MessageLabel = messageLabel;
 		}
 
 		public void HideApp()
@@ -106,7 +113,7 @@ namespace ChargingControllerApp.Utils
 				ServerConnectedImg.Visible = false;
 				ServerDisconnectedImg.Visible = true;
 				DisableServerConnectionInput();
-            }
+			}
 		}
 
 		public void DisplayServerConnectionStateLoading(bool show)
@@ -161,14 +168,16 @@ namespace ChargingControllerApp.Utils
 
 		public void DisplayErrorStatus(string message)
 		{
-			StatusMessageTB.Text = message;
+			WriteMessage(message);
 			StatusMessageTB.DisabledState.FillColor = Color.FromArgb(255, 189, 191);
+			MessageLabel.BackColor = Color.FromArgb(255, 189, 191);
 		}
 
 		public void DisplayOkStatus(string message)
 		{
-			StatusMessageTB.Text = message;
+			WriteMessage(message);
 			StatusMessageTB.DisabledState.FillColor = Color.FromArgb(218, 254, 225);
+			MessageLabel.BackColor = Color.FromArgb(255, 189, 191);
 		}
 
 		public void SelectMode(ChargingModes mode)
@@ -199,12 +208,12 @@ namespace ChargingControllerApp.Utils
 
 		public void DisplayChargingState(SmartChargingStates status)
 		{
-            if (status==lastChargingState)
-            {
+			if (status == lastChargingState)
+			{
 				return;
-            }
+			}
 
-            NotChargingImg.Visible = false;
+			NotChargingImg.Visible = false;
 			DischargingImg.Visible = false;
 			ErrorChargingImg.Visible = false;
 			ChargingImg.Visible = false;
@@ -213,25 +222,41 @@ namespace ChargingControllerApp.Utils
 			{
 				case SmartChargingStates.Activated:
 					ChargingImg.Visible = true;
-                    SoundPlayer soundConnected = new SoundPlayer(Path.GetFullPath(@"Resourses\message-incoming-2-199577.wav"));
-                    soundConnected.Play();
 
-                    break;
+					soundConnected.Play();
+
+					break;
 				case SmartChargingStates.Deactivated:
 					NotChargingImg.Visible = true;
 					break;
 				case SmartChargingStates.FailedToStartCharging:
 					ErrorChargingImg.Visible = true;
-					SoundPlayer soundDisconnect= new SoundPlayer(Path.GetFullPath(@"Resourses\bottle-205353.wav"));
+
 					soundDisconnect.Play();
-					
+
 					break;
 				case SmartChargingStates.WaitingToDischarge:
 					DischargingImg.Visible = true;
 					break;
 			}
 
-            lastChargingState= status;
-        }
+			lastChargingState = status;
+		}
+
+		public string GetMessage()
+		{
+			lock (messageLock)
+			{
+				return messageToShow;
+			}
+		}
+
+		public void WriteMessage(string message)
+		{
+			lock (messageLock)
+			{
+				messageToShow = message;
+			}
+		}
 	}
 }

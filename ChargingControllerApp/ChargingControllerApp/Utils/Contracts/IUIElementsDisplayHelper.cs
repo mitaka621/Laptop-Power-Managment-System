@@ -6,7 +6,7 @@ namespace ChargingControllerApp.Utils.Contracts
 
 	public interface IUIElementsDisplayHelper
 	{
-		public Form MainForm { get; }
+		Form MainForm { get; }
 
 		PictureBox ServerConnectedImg { get; }
 		PictureBox ServerDisconnectedImg { get; }
@@ -23,6 +23,7 @@ namespace ChargingControllerApp.Utils.Contracts
 		Guna2TextBox StatusMessageTB { get; }
 		Guna2HtmlToolTip Guna2HtmlToolTip3 { get; }
 		Control ModeInfoToolTip { get; }
+		Guna2HtmlLabel MessageLabel { get; }
 
 		System.Windows.Forms.Timer MainTimer { get; }
 
@@ -44,6 +45,8 @@ namespace ChargingControllerApp.Utils.Contracts
 		void DisplayOkStatus(string message);
 		void SelectMode(ChargingModes mode);
 		void DisplayChargingState(SmartChargingStates status);
+		string GetMessage();
+		void WriteMessage(string message);
 	}
 
 }
