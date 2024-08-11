@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
+﻿using System.Net;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace ChargingControllerApp.Utils
 {
@@ -16,7 +11,7 @@ namespace ChargingControllerApp.Utils
 
 			Regex reg = new(regPattern);
 
-			if (!reg.IsMatch(ip)||!IPAddress.TryParse(ip, out IPAddress? parsedIp))
+			if (!reg.IsMatch(ip) || !IPAddress.TryParse(ip, out IPAddress? parsedIp))
 			{
 				return false;
 			}
