@@ -569,9 +569,9 @@ namespace ChargingControllerApp
 			// 
 			chargingImg.BackgroundImage = Properties.Resources.circle_check_regular1;
 			chargingImg.BackgroundImageLayout = ImageLayout.Zoom;
-			chargingImg.Location = new Point(250, 109);
+			chargingImg.Location = new Point(257, 111);
 			chargingImg.Name = "chargingImg";
-			chargingImg.Size = new Size(23, 26);
+			chargingImg.Size = new Size(25, 26);
 			chargingImg.TabIndex = 20;
 			chargingImg.TabStop = false;
 			guna2HtmlToolTip1.SetToolTip(chargingImg, "Smart charging activated");
@@ -592,11 +592,13 @@ namespace ChargingControllerApp
 			dischargingImg.BackgroundImageLayout = ImageLayout.Zoom;
 			dischargingImg.CustomizableEdges = customizableEdges18;
 			dischargingImg.FillColor = Color.Transparent;
+			dischargingImg.Image = Properties.Resources.discharging;
 			dischargingImg.ImageRotate = 0F;
-			dischargingImg.Location = new Point(250, 109);
+			dischargingImg.Location = new Point(257, 111);
 			dischargingImg.Name = "dischargingImg";
 			dischargingImg.ShadowDecoration.CustomizableEdges = customizableEdges19;
 			dischargingImg.Size = new Size(25, 26);
+			dischargingImg.SizeMode = PictureBoxSizeMode.StretchImage;
 			dischargingImg.TabIndex = 24;
 			dischargingImg.TabStop = false;
 			guna2HtmlToolTip1.SetToolTip(dischargingImg, "Waiting for the battery to discharge");
@@ -631,7 +633,7 @@ namespace ChargingControllerApp
 			notChargingImg.CustomizableEdges = customizableEdges22;
 			notChargingImg.FillColor = Color.Transparent;
 			notChargingImg.ImageRotate = 0F;
-			notChargingImg.Location = new Point(250, 110);
+			notChargingImg.Location = new Point(257, 111);
 			notChargingImg.Name = "notChargingImg";
 			notChargingImg.ShadowDecoration.CustomizableEdges = customizableEdges23;
 			notChargingImg.Size = new Size(25, 26);
@@ -645,7 +647,7 @@ namespace ChargingControllerApp
 			errorChargingImg.CustomizableEdges = customizableEdges24;
 			errorChargingImg.FillColor = Color.Transparent;
 			errorChargingImg.ImageRotate = 0F;
-			errorChargingImg.Location = new Point(250, 109);
+			errorChargingImg.Location = new Point(250, 111);
 			errorChargingImg.Name = "errorChargingImg";
 			errorChargingImg.ShadowDecoration.CustomizableEdges = customizableEdges25;
 			errorChargingImg.Size = new Size(25, 26);

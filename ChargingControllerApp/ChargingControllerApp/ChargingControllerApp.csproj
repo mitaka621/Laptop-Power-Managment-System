@@ -10,14 +10,69 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resourses\battery-svgrepo-com.ico" />
+    <None Remove="Resourses\bottle-205353.wav" />
+    <None Remove="Resourses\charging.png" />
+    <None Remove="Resourses\charging.svg" />
     <None Remove="Resourses\circle-check-regular.png" />
     <None Remove="Resourses\circle-check-regular.svg" />
     <None Remove="Resourses\circle-xmark-regular.png" />
     <None Remove="Resourses\circle-xmark-regular.svg" />
     <None Remove="Resourses\close.png" />
     <None Remove="Resourses\close.svg" />
+    <None Remove="Resourses\discharging.png" />
+    <None Remove="Resourses\discharging.svg" />
+    <None Remove="Resourses\errorCharging.png" />
+    <None Remove="Resourses\errorCharging.svg" />
+    <None Remove="Resourses\infoIcon.png" />
+    <None Remove="Resourses\infoIcon.svg" />
     <None Remove="Resourses\logo.png" />
     <None Remove="Resourses\logo.svg" />
+    <None Remove="Resourses\message-incoming-2-199577.wav" />
+    <None Remove="Resourses\server-svgrepo-com.svg" />
+    <None Remove="Resourses\server.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resourses\battery-svgrepo-com.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\bottle-205353.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\charging.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\charging.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\discharging.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\discharging.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\errorCharging.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\errorCharging.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\infoIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\infoIcon.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\message-incoming-2-199577.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\server-svgrepo-com.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\server.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -28,14 +83,30 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resourses\circle-check-regular.png" />
-    <Resource Include="Resourses\circle-check-regular.svg" />
-    <Resource Include="Resourses\circle-xmark-regular.png" />
-    <Resource Include="Resourses\circle-xmark-regular.svg" />
-    <Resource Include="Resourses\close.png" />
-    <Resource Include="Resourses\close.svg" />
-    <Resource Include="Resourses\logo.png" />
-    <Resource Include="Resourses\logo.svg" />
+    <Content Include="Resourses\circle-check-regular.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\circle-check-regular.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\circle-xmark-regular.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\circle-xmark-regular.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\close.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\close.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\logo.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
