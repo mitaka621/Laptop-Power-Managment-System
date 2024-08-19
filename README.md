@@ -15,10 +15,10 @@
 <h1>How to Setup</h1>
 <ol>
   <li>Connect Everything</li>
-  <li>Go to the esp32 code (ESPApp/EspApp/EspApp.ino)</li>
+  <li>Download the ESP32 code (<a href="https://github.com/mitaka621/Laptop-Power-Managment-System/releases/tag/release">EspApp.zip</a>)</li>
   <li>Enter your wifi credentials and setup the static ip config</li>
   <li>Change the pins configuration if needed</li>
   <li>(optional) Generate a token which has to be present in every request made to the esp32</li>
-  <li>Compile the windows forms app and run it</li>
+  <li>Download the windows app which will manage the charging (<a href="https://github.com/mitaka621/Laptop-Power-Managment-System/releases/tag/release">ChargingControllerApp.zip</a>)</li>
   <li>Enter your server settings in the server settings tab</li>
 </ol>
