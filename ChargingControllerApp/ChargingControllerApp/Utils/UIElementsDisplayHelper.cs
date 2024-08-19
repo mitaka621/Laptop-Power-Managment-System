@@ -178,7 +178,7 @@ namespace ChargingControllerApp.Utils
 		public void DisplayOkStatus(string message)
 		{
 			WriteMessage(message);
-			MessageLabel.BackColor = Color.FromArgb(255, 189, 191);
+			MessageLabel.BackColor = Color.FromArgb(218, 254, 225);
 		}
 
 		public void SelectMode(ChargingModes mode)
