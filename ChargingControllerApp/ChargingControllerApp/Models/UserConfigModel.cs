@@ -12,7 +12,7 @@ namespace ChargingControllerApp.Models
 		{
 			get => maxSliderValue; set
 			{
-				if (value < 50 || value > 90)
+				if (value < 50 || value > 100)
 				{
 					throw new ArgumentOutOfRangeException("MaxSliderValue");
 				}

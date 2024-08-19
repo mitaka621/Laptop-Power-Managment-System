@@ -295,7 +295,6 @@ namespace ChargingControllerApp
 			// 
 			batteryMaxSlider.Enabled = false;
 			batteryMaxSlider.Location = new Point(25, 131);
-			batteryMaxSlider.Maximum = 90;
 			batteryMaxSlider.Minimum = 50;
 			batteryMaxSlider.Name = "batteryMaxSlider";
 			batteryMaxSlider.Size = new Size(300, 18);
