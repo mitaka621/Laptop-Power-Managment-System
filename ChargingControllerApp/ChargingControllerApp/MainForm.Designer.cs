@@ -569,7 +569,7 @@ namespace ChargingControllerApp
 			// 
 			chargingImg.BackgroundImage = Properties.Resources.circle_check_regular1;
 			chargingImg.BackgroundImageLayout = ImageLayout.Zoom;
-			chargingImg.Location = new Point(257, 111);
+			chargingImg.Location = new Point(253, 111);
 			chargingImg.Name = "chargingImg";
 			chargingImg.Size = new Size(25, 26);
 			chargingImg.TabIndex = 20;
@@ -594,7 +594,7 @@ namespace ChargingControllerApp
 			dischargingImg.FillColor = Color.Transparent;
 			dischargingImg.Image = Properties.Resources.discharging;
 			dischargingImg.ImageRotate = 0F;
-			dischargingImg.Location = new Point(257, 111);
+			dischargingImg.Location = new Point(253, 111);
 			dischargingImg.Name = "dischargingImg";
 			dischargingImg.ShadowDecoration.CustomizableEdges = customizableEdges19;
 			dischargingImg.Size = new Size(25, 26);
@@ -633,7 +633,7 @@ namespace ChargingControllerApp
 			notChargingImg.CustomizableEdges = customizableEdges22;
 			notChargingImg.FillColor = Color.Transparent;
 			notChargingImg.ImageRotate = 0F;
-			notChargingImg.Location = new Point(257, 111);
+			notChargingImg.Location = new Point(253, 110);
 			notChargingImg.Name = "notChargingImg";
 			notChargingImg.ShadowDecoration.CustomizableEdges = customizableEdges23;
 			notChargingImg.Size = new Size(25, 26);
@@ -646,11 +646,13 @@ namespace ChargingControllerApp
 			errorChargingImg.BackgroundImageLayout = ImageLayout.Zoom;
 			errorChargingImg.CustomizableEdges = customizableEdges24;
 			errorChargingImg.FillColor = Color.Transparent;
+			errorChargingImg.Image = Properties.Resources.errorCharging;
 			errorChargingImg.ImageRotate = 0F;
-			errorChargingImg.Location = new Point(250, 111);
+			errorChargingImg.Location = new Point(253, 111);
 			errorChargingImg.Name = "errorChargingImg";
 			errorChargingImg.ShadowDecoration.CustomizableEdges = customizableEdges25;
 			errorChargingImg.Size = new Size(25, 26);
+			errorChargingImg.SizeMode = PictureBoxSizeMode.Zoom;
 			errorChargingImg.TabIndex = 25;
 			errorChargingImg.TabStop = false;
 			guna2HtmlToolTip2.SetToolTip(errorChargingImg, "Charging command sent but laptop failed to begin charging");

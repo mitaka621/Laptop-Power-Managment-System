@@ -133,6 +133,16 @@ namespace ChargingControllerApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap errorCharging {
+            get {
+                object obj = ResourceManager.GetObject("errorCharging", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap infoIcon {
             get {
                 object obj = ResourceManager.GetObject("infoIcon", resourceCulture);
