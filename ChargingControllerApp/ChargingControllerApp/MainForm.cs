@@ -49,7 +49,8 @@ namespace ChargingControllerApp
 				dischargingImg,
 				errorChargingImg,
 				chargingImg,
-				messageLabel
+				messageLabel,
+				notifyIcon
 			);
 
 			StartPosition = FormStartPosition.Manual;
@@ -115,6 +116,7 @@ namespace ChargingControllerApp
 				{
 					_uiHelper.DisplayErrorStatus("Override activated. Controls disabled!");
 					_uiHelper.DisableBatteryInputs();
+					_uiHelper.DisplayRedTreyIcon(true);
 
 					mainTimer.Start();
 					return;
@@ -122,6 +124,7 @@ namespace ChargingControllerApp
 				else
 				{
 					_uiHelper.SelectMode((ChargingModes)modeSelectorCB.SelectedIndex);
+					_uiHelper.DisplayRedTreyIcon(false);
 				}
 
 				if (response.IsError)

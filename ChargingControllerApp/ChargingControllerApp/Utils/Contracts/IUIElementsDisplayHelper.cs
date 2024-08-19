@@ -8,6 +8,8 @@ namespace ChargingControllerApp.Utils.Contracts
 	{
 		Form MainForm { get; }
 
+		NotifyIcon TreyIcon { get; }
+
 		PictureBox ServerConnectedImg { get; }
 		PictureBox ServerDisconnectedImg { get; }
 		Guna2CircleProgressBar ServerConnectionLoading { get; }
@@ -46,6 +48,7 @@ namespace ChargingControllerApp.Utils.Contracts
 		void DisplayChargingState(SmartChargingStates status);
 		string GetMessage();
 		void WriteMessage(string message);
+		void DisplayRedTreyIcon(bool change);
 	}
 
 }

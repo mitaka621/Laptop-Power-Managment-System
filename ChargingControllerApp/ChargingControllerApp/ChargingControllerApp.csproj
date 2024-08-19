@@ -28,6 +28,7 @@
     <None Remove="Resourses\infoIcon.svg" />
     <None Remove="Resourses\logo.png" />
     <None Remove="Resourses\logo.svg" />
+    <None Remove="Resourses\logo_red.ico" />
     <None Remove="Resourses\message-incoming-2-199577.wav" />
     <None Remove="Resourses\server-svgrepo-com.svg" />
     <None Remove="Resourses\server.png" />
@@ -62,6 +63,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resourses\infoIcon.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resourses\logo_red.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resourses\message-incoming-2-199577.wav">

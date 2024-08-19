@@ -38,6 +38,8 @@ namespace ChargingControllerApp.Utils
 		public Guna2PictureBox ErrorChargingImg { get; private set; }
 		public PictureBox ChargingImg { get; private set; }
 
+		public NotifyIcon TreyIcon { get; private set; }
+
 		public UIElementsDisplayHelper(
 			Form mainForm,
 			PictureBox serverConnectedImg,
@@ -57,7 +59,8 @@ namespace ChargingControllerApp.Utils
 			Guna2PictureBox dischargingImg,
 			Guna2PictureBox errorChargingImg,
 			PictureBox chargingImg,
-			Guna2HtmlLabel messageLabel
+			Guna2HtmlLabel messageLabel,
+			NotifyIcon treyIcon
 		)
 		{
 			MainForm = mainForm;
@@ -83,6 +86,8 @@ namespace ChargingControllerApp.Utils
 			ErrorChargingImg = errorChargingImg;
 			ChargingImg = chargingImg;
 			MessageLabel = messageLabel;
+
+			TreyIcon = treyIcon;
 		}
 
 		public void HideApp()
@@ -267,6 +272,19 @@ namespace ChargingControllerApp.Utils
 			{
 				messageToShow = message;
 			}
+		}
+
+		public void DisplayRedTreyIcon(bool change)
+		{
+			if (change)
+			{
+				TreyIcon.Icon = new Icon(@"Resourses\logo_red.ico");
+			}
+			else
+			{
+				TreyIcon.Icon = new Icon(@"Resourses\battery-svgrepo-com.ico");
+			}
+
 		}
 	}
 }
