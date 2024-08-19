@@ -86,7 +86,7 @@ namespace ChargingControllerApp
 					return;
 				}
 
-				//mainTimer.Start();
+				mainTimer.Start();
 			}
 		}
 
